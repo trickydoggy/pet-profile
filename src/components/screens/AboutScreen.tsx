@@ -1,0 +1,301 @@
+import React, { useState } from 'react';
+import {
+  Heart,
+  Cake,
+  PawPrint,
+  Sparkles,
+  Award,
+  Clock,
+  ShieldCheck,
+  Zap,
+  Activity,
+  Smile,
+  Cookie,
+  Sun,
+  Coffee,
+  Bed,
+  MapPin,
+  CalendarHeart,
+} from 'lucide-react';
+import confetti from 'canvas-confetti';
+import { BUDDY_PROFILE, DAILY_ROUTINE, FAVORITE_THINGS } from '../../data/buddyData';
+
+interface AboutScreenProps {
+  onOpenPlaydateModal: () => void;
+}
+
+export const AboutScreen: React.FC<AboutScreenProps> = ({ onOpenPlaydateModal }) => {
+  const [treatsGiven, setTreatsGiven] = useState(42);
+  const [bellyRubs, setBellyRubs] = useState(88);
+  const [lastAction, setLastAction] = useState<string | null>(null);
+
+  const giveTreat = (e: React.MouseEvent) => {
+    setTreatsGiven((prev) => prev + 1);
+    setLastAction('Crunch crunch! Buddy says woof & thank you! 🍪');
+
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = (rect.left + rect.width / 2) / window.innerWidth;
+    const y = (rect.top + rect.height / 2) / window.innerHeight;
+
+    confetti({
+      particleCount: 30,
+      spread: 70,
+      origin: { x, y },
+      colors: ['#22d3ee', '#38bdf8', '#a855f7', '#34d399', '#ffffff'],
+    });
+
+    setTimeout(() => setLastAction(null), 3000);
+  };
+
+  const giveBellyRub = (e: React.MouseEvent) => {
+    setBellyRubs((prev) => prev + 1);
+    setLastAction('Thump-thump-thump! Back leg kicking with pure joy! 🐾');
+
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = (rect.left + rect.width / 2) / window.innerWidth;
+    const y = (rect.top + rect.height / 2) / window.innerHeight;
+
+    confetti({
+      particleCount: 25,
+      spread: 55,
+      origin: { x, y },
+      colors: ['#f43f5e', '#fb7185', '#22d3ee', '#ffffff'],
+    });
+
+    setTimeout(() => setLastAction(null), 3000);
+  };
+
+  return (
+    <div className="space-y-6 pb-24 animate-fadeIn">
+      {/* Screen Title Banner with Frosted Glass Card */}
+      <div className="bg-white/5 backdrop-blur-xl rounded-[24px] sm:rounded-[28px] p-6 shadow-2xl border border-white/10 relative overflow-hidden">
+        <div className="flex flex-col sm:flex-row items-center gap-5">
+          <div className="relative">
+            <img
+              src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=400&q=80"
+              alt="Buddy"
+              referrerPolicy="no-referrer"
+              className="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover border-4 border-cyan-400/40 shadow-xl shadow-cyan-500/20"
+            />
+            <div className="absolute -bottom-1 -right-1 w-8 h-8 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 text-white flex items-center justify-center text-xs font-bold shadow-lg border border-white/30">
+              🐾
+            </div>
+          </div>
+          <div className="text-center sm:text-left flex-1">
+            <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-cyan-500/20 border border-cyan-400/30 text-cyan-300 text-xs font-bold mb-2">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Queridinho Oficial de Bernal Heights</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-white font-heading">
+              Conheça o Buddy
+            </h2>
+            <p className="text-sm text-white/70 mt-1">
+              Golden Retriever de 3 anos • Nascido em 12 de Maio de 2021 • San Francisco, CA
+            </p>
+          </div>
+        </div>
+
+        {/* Interactive Treat & Belly Rub Action Bar */}
+        <div className="mt-6 pt-5 border-t border-white/10">
+          <div className="grid grid-cols-2 gap-3">
+            <button
+              id="give-treat-btn"
+              onClick={giveTreat}
+              className="flex items-center justify-center gap-2 py-3 px-4 rounded-2xl bg-white/10 border border-white/20 text-cyan-300 font-bold text-xs sm:text-sm hover:bg-white/15 active:scale-95 transition-all shadow-lg backdrop-blur-md"
+            >
+              <Cookie className="w-4 h-4 text-cyan-400" />
+              <span>Dar Petisco ({treatsGiven})</span>
+            </button>
+            <button
+              id="give-belly-rub-btn"
+              onClick={giveBellyRub}
+              className="flex items-center justify-center gap-2 py-3 px-4 rounded-2xl bg-rose-500/15 border border-rose-400/30 text-rose-300 font-bold text-xs sm:text-sm hover:bg-rose-500/25 active:scale-95 transition-all shadow-lg backdrop-blur-md"
+            >
+              <Heart className="w-4 h-4 text-rose-400 fill-rose-400" />
+              <span>Carinho na Barriga ({bellyRubs})</span>
+            </button>
+          </div>
+
+          {lastAction && (
+            <div className="mt-3 p-2.5 bg-cyan-500/20 border border-cyan-400/40 rounded-xl text-center text-xs font-bold text-cyan-200 animate-bounce">
+              {lastAction}
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Story & Biography */}
+      <div className="bg-white/5 backdrop-blur-xl rounded-[24px] p-6 shadow-2xl border border-white/10">
+        <h3 className="text-lg sm:text-xl font-bold text-white font-heading mb-3 flex items-center gap-2">
+          <PawPrint className="w-5 h-5 text-cyan-400" />
+          <span>Minha História & Personalidade</span>
+        </h3>
+        <div className="text-sm sm:text-base text-white/80 leading-relaxed space-y-3">
+          <p>
+            Au au! Eu mudei para o ensolarado bairro de Bernal Heights em San Francisco quando eu era apenas uma bolinha de pelos de 8 semanas. Desde a minha primeira caminhada no morro de Bernal Hill, eu sabia que este topo gramado e ventilado era o meu verdadeiro reino.
+          </p>
+          <p>
+            Eu acredito que cada humano andando pela Cortland Avenue veio ao mundo com o propósito de me dar carinho atrás das orelhas, e cada cão no Parque da Luna se torna meu melhor amigo instantaneamente. Quando não estou buscando bolinhas de tênis na velocidade da luz, me dedico ao trabalho de consultor de sonecas em tempo integral e detector de embalagens de queijo.
+          </p>
+        </div>
+
+        {/* Trait Pills */}
+        <div className="mt-5 flex flex-wrap gap-2">
+          {BUDDY_PROFILE.traits.map((trait, idx) => (
+            <span
+              key={idx}
+              className={`px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wide border ${
+                trait.type === 'sage'
+                  ? 'bg-emerald-500/20 text-emerald-300 border-emerald-400/30'
+                  : 'bg-cyan-500/20 text-cyan-300 border-cyan-400/30'
+              }`}
+            >
+              {trait.label}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* Personality & Skill Level Meters */}
+      <div className="bg-white/5 backdrop-blur-xl rounded-[24px] p-6 shadow-2xl border border-white/10">
+        <h3 className="text-lg sm:text-xl font-bold text-white font-heading mb-4 flex items-center gap-2">
+          <Activity className="w-5 h-5 text-cyan-400" />
+          <span>Atributos & Estatísticas Caninas</span>
+        </h3>
+        <div className="space-y-4">
+          <div>
+            <div className="flex justify-between text-xs sm:text-sm font-bold text-white mb-1.5">
+              <span>Simpatia com Cães & Humanos</span>
+              <span className="text-cyan-400">100% (Amigo Instantâneo)</span>
+            </div>
+            <div className="w-full h-3 rounded-full bg-white/10 overflow-hidden border border-white/10">
+              <div className="h-full rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 shadow-[0_0_10px_#22d3ee]" style={{ width: '100%' }} />
+            </div>
+          </div>
+
+          <div>
+            <div className="flex justify-between text-xs sm:text-sm font-bold text-white mb-1.5">
+              <span>Energia & Vontade de Brincar</span>
+              <span className="text-emerald-400">94% (Sem Parar)</span>
+            </div>
+            <div className="w-full h-3 rounded-full bg-white/10 overflow-hidden border border-white/10">
+              <div className="h-full rounded-full bg-gradient-to-r from-emerald-500 to-teal-400 shadow-[0_0_10px_#34d399]" style={{ width: '94%' }} />
+            </div>
+          </div>
+
+          <div>
+            <div className="flex justify-between text-xs sm:text-sm font-bold text-white mb-1.5">
+              <span>Motivação por Petiscos & Radar de Cheiro</span>
+              <span className="text-purple-400">100% (Detecta Queijo a 2km)</span>
+            </div>
+            <div className="w-full h-3 rounded-full bg-white/10 overflow-hidden border border-white/10">
+              <div className="h-full rounded-full bg-gradient-to-r from-purple-500 to-pink-500 shadow-[0_0_10px_#c084fc]" style={{ width: '100%' }} />
+            </div>
+          </div>
+
+          <div>
+            <div className="flex justify-between text-xs sm:text-sm font-bold text-white mb-1.5">
+              <span>Natação & Pular Ondas</span>
+              <span className="text-cyan-400">88% (Mestre das Ondas)</span>
+            </div>
+            <div className="w-full h-3 rounded-full bg-white/10 overflow-hidden border border-white/10">
+              <div className="h-full rounded-full bg-gradient-to-r from-cyan-400 to-blue-600 shadow-[0_0_10px_#38bdf8]" style={{ width: '88%' }} />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Daily Routine */}
+      <div className="bg-white/5 backdrop-blur-xl rounded-[24px] p-6 shadow-2xl border border-white/10">
+        <h3 className="text-lg sm:text-xl font-bold text-white font-heading mb-4 flex items-center gap-2">
+          <Clock className="w-5 h-5 text-cyan-400" />
+          <span>Um Dia na Vida do Buddy</span>
+        </h3>
+        <div className="space-y-4 relative before:absolute before:left-4 before:top-2 before:bottom-2 before:w-0.5 before:bg-white/15">
+          {DAILY_ROUTINE.map((item, idx) => (
+            <div key={idx} className="relative pl-9">
+              <div className="absolute left-2 top-1.5 w-4 h-4 rounded-full bg-cyan-400 border-2 border-slate-900 shadow-[0_0_8px_#22d3ee]" />
+              <div className="text-xs font-bold text-cyan-400 uppercase tracking-wider">
+                {item.time}
+              </div>
+              <h4 className="text-sm sm:text-base font-bold text-white mt-0.5">
+                {item.activity}
+              </h4>
+              <p className="text-xs sm:text-sm text-white/70 mt-1 leading-normal">
+                {item.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Favorite Things */}
+      <div className="bg-white/5 backdrop-blur-xl rounded-[24px] p-6 shadow-2xl border border-white/10">
+        <h3 className="text-lg sm:text-xl font-bold text-white font-heading mb-4 flex items-center gap-2">
+          <Smile className="w-5 h-5 text-cyan-400" />
+          <span>Coisas Favoritas</span>
+        </h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {FAVORITE_THINGS.map((fav, idx) => (
+            <div
+              key={idx}
+              className="p-3.5 rounded-2xl bg-white/5 border border-white/10 flex items-start gap-3 hover:bg-white/10 transition-colors"
+            >
+              <span className="text-2xl">{fav.emoji}</span>
+              <div>
+                <h4 className="text-xs sm:text-sm font-bold text-white">
+                  {fav.name}
+                </h4>
+                <p className="text-xs text-white/70 mt-0.5">{fav.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Health & Care Information Card */}
+      <div className="bg-white/5 backdrop-blur-xl rounded-[24px] p-6 shadow-2xl border border-white/10">
+        <h3 className="text-lg sm:text-xl font-bold text-white font-heading mb-3 flex items-center gap-2">
+          <ShieldCheck className="w-5 h-5 text-emerald-400" />
+          <span>Informações de Saúde e Segurança</span>
+        </h3>
+        <div className="grid grid-cols-2 gap-3 text-xs sm:text-sm">
+          <div className="p-3 rounded-xl bg-white/5 border border-white/10">
+            <span className="text-white/50 block text-[11px]">Peso</span>
+            <span className="font-bold text-white">{BUDDY_PROFILE.weight}</span>
+          </div>
+          <div className="p-3 rounded-xl bg-white/5 border border-white/10">
+            <span className="text-white/50 block text-[11px]">Vacinação</span>
+            <span className="font-bold text-emerald-400">✓ 100% Em Dia</span>
+          </div>
+          <div className="p-3 rounded-xl bg-white/5 border border-white/10">
+            <span className="text-white/50 block text-[11px]">Microchip</span>
+            <span className="font-bold text-emerald-400">✓ Registrado 24Pet</span>
+          </div>
+          <div className="p-3 rounded-xl bg-white/5 border border-white/10">
+            <span className="text-white/50 block text-[11px]">Veterinário</span>
+            <span className="font-bold text-white">Hospital Veterinário Mission</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom CTA to Book Playdate */}
+      <div className="p-6 rounded-[24px] bg-gradient-to-r from-cyan-600/80 via-blue-600/80 to-purple-600/80 backdrop-blur-xl text-white text-center shadow-2xl border border-white/20">
+        <h3 className="text-xl font-bold font-heading mb-1 text-white">
+          Acha que nossos cães seriam grandes amigos?
+        </h3>
+        <p className="text-sm text-white/90 mb-4 max-w-sm mx-auto">
+          Vamos nos encontrar no Parque Bernal Heights ou tomar um copinho de chantilly juntos!
+        </p>
+        <button
+          id="about-cta-playdate-btn"
+          onClick={onOpenPlaydateModal}
+          className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-slate-900 font-extrabold text-sm hover:bg-white/90 active:scale-95 transition-all shadow-lg"
+        >
+          <CalendarHeart className="w-4 h-4 text-cyan-600" />
+          <span>Solicitar Encontro Canino</span>
+        </button>
+      </div>
+    </div>
+  );
+};
