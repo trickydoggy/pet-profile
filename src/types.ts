@@ -18,7 +18,7 @@ export interface NeighborhoodSpot {
   imageUrl: string;
   coordinates: { x: number; y: number }; // percentage on map canvas
   bestTimeToVisit: string;
-  leashRule: 'Off-leash allowed' | 'Leashed only' | 'Fenced dog park';
+  leashRule: 'Sem coleira permitido' | 'Apenas com coleira' | 'Parque cercado para cães';
 }
 
 export interface GalleryPhoto {

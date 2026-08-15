@@ -84,13 +84,13 @@ export const AboutScreen: React.FC<AboutScreenProps> = ({ onOpenPlaydateModal })
           <div className="text-center sm:text-left flex-1">
             <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-cyan-500/20 border border-cyan-400/30 text-cyan-300 text-xs font-bold mb-2">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Queridinho Oficial de Bernal Heights</span>
+              <span>O cachorrinho mais bonito do mundo!</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-white font-heading">
-              Conheça o Buddy
+              Conheça o Doug
             </h2>
             <p className="text-sm text-white/70 mt-1">
-              Golden Retriever de 3 anos • Nascido em 12 de Maio de 2021 • San Francisco, CA
+              Pug de 10 anos • Nascido em 14 de Setembro de 2015 • São Paulo, SP
             </p>
           </div>
         </div>
@@ -104,7 +104,7 @@ export const AboutScreen: React.FC<AboutScreenProps> = ({ onOpenPlaydateModal })
               className="flex items-center justify-center gap-2 py-3 px-4 rounded-2xl bg-white/10 border border-white/20 text-cyan-300 font-bold text-xs sm:text-sm hover:bg-white/15 active:scale-95 transition-all shadow-lg backdrop-blur-md"
             >
               <Cookie className="w-4 h-4 text-cyan-400" />
-              <span>Dar Petisco ({treatsGiven})</span>
+              <span>Dar Bifinho ({treatsGiven})</span>
             </button>
             <button
               id="give-belly-rub-btn"

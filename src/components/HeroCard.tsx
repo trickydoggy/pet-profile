@@ -38,7 +38,7 @@ export const HeroCard: React.FC<HeroCardProps> = ({ onExploreMore }) => {
       <div className="relative aspect-[4/5] sm:aspect-[16/9] md:aspect-[16/8] w-full overflow-hidden">
         <img
           src={BUDDY_PROFILE.heroImage}
-          alt="Buddy the Golden Retriever sitting happily in Bernal Heights park"
+          alt="Doug, o cachorrinho mais bonito do mundo"
           referrerPolicy="no-referrer"
           className={`w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105 ${
             isWagging ? 'scale-105 filter saturate-110' : ''
@@ -53,7 +53,7 @@ export const HeroCard: React.FC<HeroCardProps> = ({ onExploreMore }) => {
           id="hero-pat-buddy-btn"
           onClick={handlePat}
           className="absolute top-4 right-4 z-10 flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-slate-900/70 backdrop-blur-xl text-rose-300 text-xs font-bold shadow-lg hover:bg-slate-800/90 active:scale-90 transition-all border border-white/20 hover:border-rose-400/40"
-          title="Clique para fazer carinho no Buddy!"
+          title="Clique para fazer carinho no Doug!"
         >
           <Heart className="w-3.5 h-3.5 fill-rose-400 text-rose-400" />
           <span>{pats} Carinhos</span>
@@ -65,14 +65,14 @@ export const HeroCard: React.FC<HeroCardProps> = ({ onExploreMore }) => {
           <span>Ativo & Pronto para Brincar</span>
         </div>
 
-        {/* Hero Title Overlay matching screenshot: "Olá, eu sou o Buddy!" */}
+        {/* Hero Title Overlay matching screenshot: "Olá, eu sou o Dougy!" */}
         <div className="absolute bottom-6 left-6 right-6 z-10 flex flex-col justify-end">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight drop-shadow-md font-heading flex items-center gap-2">
-            Olá, eu sou o Buddy!
+            Olá, eu sou o Doug!
           </h2>
           <p className="text-white/80 text-sm sm:text-base font-medium mt-1 drop-shadow flex items-center gap-1.5">
             <span className="inline-block w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_8px_#22d3ee]"></span>
-            Bernal Heights, San Francisco • 3 anos
+            São Paulo, SP • 10 anos
           </p>
         </div>
       </div>

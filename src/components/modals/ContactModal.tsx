@@ -34,13 +34,13 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
         <div className="mb-5 pr-8">
           <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-cyan-500/20 border border-cyan-400/30 text-cyan-300 text-xs font-bold mb-2">
             <span>🐾</span>
-            <span>Humanos do Buddy</span>
+            <span>Humanos do Doug</span>
           </div>
           <h3 className="text-2xl font-extrabold text-white font-heading">
             Entre em Contato
           </h3>
           <p className="text-xs sm:text-sm text-white/70 mt-1">
-            Sarah & Mark Chen • Bernal Heights, San Francisco
+            Edson & Denise • São Paulo, SP
           </p>
         </div>
 

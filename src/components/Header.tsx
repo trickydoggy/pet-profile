@@ -18,8 +18,8 @@ export const Header: React.FC<HeaderProps> = ({
   const handleShare = () => {
     if (navigator.share) {
       navigator.share({
-        title: "Mundo do Buddy - Perfil de Golden Retriever",
-        text: "Confira o Buddy, o Golden Retriever de Bernal Heights, SF!",
+        title: "Mundo do Doug - Perfil de Pug",
+        text: "Confira o Doug, o Pug mais lindo do mundo!",
         url: window.location.href,
       }).catch(() => {});
     } else {
@@ -39,7 +39,7 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
           <div>
             <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-white font-heading flex items-center gap-1.5">
-              Mundo do Buddy
+              Mundo do Doug
             </h1>
           </div>
         </div>
@@ -63,7 +63,7 @@ export const Header: React.FC<HeaderProps> = ({
             id="header-share-btn"
             onClick={handleShare}
             className="p-2 rounded-full bg-white/10 hover:bg-white/15 text-white/90 transition-colors border border-white/15 backdrop-blur-md"
-            title="Compartilhar Perfil do Buddy"
+            title="Compartilhar Perfil do Doug"
           >
             <Share2 className="w-4 h-4" />
           </button>

@@ -3,13 +3,13 @@ import { NeighborhoodSpot, GalleryPhoto, DailyRoutineItem } from '../types';
 export const BUDDY_PROFILE = {
   name: 'Doug',
   headline: "Olá, eu sou o Doug!",
-  tagline: "O Pug mais bonito do mundo!",
+  tagline: "O cachorro mais bonito do mundo!",
   birthday: '14 de Setembro de 2015',
   age: '11 anos de idade',
   breed: 'Pug',
   neighborhood: 'Vila Industria, São Paulo, SP',
   weight: '11 kg (24 lbs)',
-  color: 'Bege',
+  color: 'Creme',
   status: 'Pronto para comer um bifinho 😋',
   traits: [
     { label: 'Alta Energia', type: 'sage' as const },
@@ -27,9 +27,9 @@ export const BUDDY_PROFILE = {
     squirrelChasing: 72,
   },
   humans: {
-    names: 'Sarah & Mark Chen',
-    phone: '(415) 890-PAWS',
-    email: 'buddy.golden.sf@gmail.com',
+    names: 'Edson & Denise',
+    phone: '(11) 9.9931-8891',
+    email: 'trickyeds@gmail.com',
     instagram: '@buddy_in_bernal',
     emergencyVet: 'Hospital Veterinário Mission (415) 552-1969',
   },

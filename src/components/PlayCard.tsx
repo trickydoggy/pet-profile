@@ -20,16 +20,27 @@ export const PlayCard: React.FC<PlayCardProps> = ({
 
       {/* Heading */}
       <h3 className="text-xl sm:text-2xl font-bold text-white font-heading mb-2">
-        Vamos Brincar!
+        Preciso de ajuda!
       </h3>
 
       {/* Subtext */}
       <p className="text-white/80 text-base sm:text-lg max-w-md mx-auto leading-relaxed mb-6 font-normal">
-        Quer marcar um encontro de cães ou falar com meus humanos?
+        Se você me encontrar, por favor, ajude-me a voltar para casa!
       </p>
 
       {/* Action Buttons Row */}
       <div className="grid grid-cols-1 xs:grid-cols-2 gap-3.5 max-w-md mx-auto">
+               
+        {/* Call Button (Frosted Emerald Outline) */}
+        <button
+          id="playcard-call-btn"
+          onClick={onCallClick}
+          className="flex items-center justify-center gap-2.5 w-full h-12 sm:h-13 px-5 rounded-full border border-emerald-400/40 text-emerald-300 bg-emerald-500/10 font-semibold text-base hover:bg-emerald-500/20 transition-all transform active:scale-95 backdrop-blur-md"
+        >
+          <Phone className="w-5 h-5" />
+          <span>Ligar</span>
+        </button>
+
         {/* Email Us Button (Frosted Cyan-Blue Gradient) */}
         <button
           id="playcard-email-btn"
@@ -40,19 +51,10 @@ export const PlayCard: React.FC<PlayCardProps> = ({
           <span>Enviar E-mail</span>
         </button>
 
-        {/* Call Button (Frosted Emerald Outline) */}
-        <button
-          id="playcard-call-btn"
-          onClick={onCallClick}
-          className="flex items-center justify-center gap-2.5 w-full h-12 sm:h-13 px-5 rounded-full border border-emerald-400/40 text-emerald-300 bg-emerald-500/10 font-semibold text-base hover:bg-emerald-500/20 transition-all transform active:scale-95 backdrop-blur-md"
-        >
-          <Phone className="w-5 h-5" />
-          <span>Ligar</span>
-        </button>
       </div>
 
       {/* Bonus Quick Schedule Playdate Shortcut */}
-      <div className="mt-5 pt-3.5 border-t border-white/10 flex items-center justify-center gap-1.5 text-xs text-white/60">
+     {/*  <div className="mt-5 pt-3.5 border-t border-white/10 flex items-center justify-center gap-1.5 text-xs text-white/60">
         <span>Procurando um encontro no fim de semana?</span>
         <button
           id="playcard-schedule-link"
@@ -62,7 +64,7 @@ export const PlayCard: React.FC<PlayCardProps> = ({
           <Calendar className="w-3.5 h-3.5" />
           <span>Agendar Encontro</span>
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };
