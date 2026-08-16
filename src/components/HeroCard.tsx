@@ -40,7 +40,7 @@ export const HeroCard: React.FC<HeroCardProps> = ({ onExploreMore }) => {
           src={BUDDY_PROFILE.heroImage}
           alt="Doug, o cachorrinho mais bonito do mundo"
           referrerPolicy="no-referrer"
-          className={`w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105 ${
+          className={`w-full h-full object-cover object-[50%_8%] transition-transform duration-700 group-hover:scale-105 ${
             isWagging ? 'scale-105 filter saturate-110' : ''
           }`}
         />

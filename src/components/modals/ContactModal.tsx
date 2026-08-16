@@ -46,6 +46,54 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
 
         {/* Contact Methods List */}
         <div className="space-y-3">
+          {/* Phone Option 1 */}
+          <div className="p-4 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-between shadow-lg hover:border-emerald-400/30 transition-all">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-400/30 flex items-center justify-center">
+                <Phone className="w-5 h-5" />
+              </div>
+              <div>
+                <span className="text-xs text-white/50 font-semibold block">Ligação ou Mensagem - Edson</span>
+                <a
+                  href={`tel:${BUDDY_PROFILE.humans.phone.replace(/[^0-9]/g, '')}`}
+                  className="text-sm font-bold text-white hover:text-emerald-300 transition-colors"
+                >
+                  {BUDDY_PROFILE.humans.phone}
+                </a>
+              </div>
+            </div>
+            <a
+              href={`tel:${BUDDY_PROFILE.humans.phone.replace(/[^0-9]/g, '')}`}
+              className="px-3.5 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 text-xs font-bold hover:bg-emerald-500/30 transition-all"
+            >
+              Ligar
+            </a>
+          </div>
+
+          {/* Phone Option 2 */}
+          <div className="p-4 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-between shadow-lg hover:border-emerald-400/30 transition-all">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-400/30 flex items-center justify-center">
+                <Phone className="w-5 h-5" />
+              </div>
+              <div>
+                <span className="text-xs text-white/50 font-semibold block">Ligação ou Mensagem - Denise</span>
+                <a
+                  href={`tel:${BUDDY_PROFILE.humans.phone.replace(/[^0-9]/g, '')}`}
+                  className="text-sm font-bold text-white hover:text-emerald-300 transition-colors"
+                >
+                  {BUDDY_PROFILE.humans.phone1}
+                </a>
+              </div>
+            </div>
+            <a
+              href={`tel:${BUDDY_PROFILE.humans.phone.replace(/[^0-9]/g, '')}`}
+              className="px-3.5 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 text-xs font-bold hover:bg-emerald-500/30 transition-all"
+            >
+              Ligar
+            </a>
+          </div>
+
           {/* Email Option */}
           <div className="p-4 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-between shadow-lg hover:border-cyan-400/30 transition-all">
             <div className="flex items-center gap-3">
@@ -75,30 +123,6 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
             </button>
           </div>
 
-          {/* Phone Option */}
-          <div className="p-4 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-between shadow-lg hover:border-emerald-400/30 transition-all">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-400/30 flex items-center justify-center">
-                <Phone className="w-5 h-5" />
-              </div>
-              <div>
-                <span className="text-xs text-white/50 font-semibold block">Ligação ou Mensagem</span>
-                <a
-                  href={`tel:${BUDDY_PROFILE.humans.phone.replace(/[^0-9]/g, '')}`}
-                  className="text-sm font-bold text-white hover:text-emerald-300 transition-colors"
-                >
-                  {BUDDY_PROFILE.humans.phone}
-                </a>
-              </div>
-            </div>
-            <a
-              href={`tel:${BUDDY_PROFILE.humans.phone.replace(/[^0-9]/g, '')}`}
-              className="px-3.5 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 text-xs font-bold hover:bg-emerald-500/30 transition-all"
-            >
-              Ligar
-            </a>
-          </div>
-
           {/* Instagram Option */}
           <div className="p-4 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-between shadow-lg hover:border-rose-400/30 transition-all">
             <div className="flex items-center gap-3">
@@ -123,17 +147,44 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
               )}
             </button>
           </div>
-        </div>
 
-        {/* Emergency Vet Info */}
-        <div className="mt-5 p-3.5 rounded-2xl bg-rose-500/15 border border-rose-500/30 flex items-start gap-2.5 text-xs text-rose-200">
-          <ShieldAlert className="w-4 h-4 text-rose-400 flex-shrink-0 mt-0.5" />
-          <div>
-            <strong className="block font-bold text-rose-300">Veterinário de Emergência:</strong>
-            <span>{BUDDY_PROFILE.humans.emergencyVet}</span>
+          {/* Vet Phone Number */}
+          <div className="p-4 rounded-2xl bg-rose-500/15 border border-rose-500/30 flex items-center justify-between shadow-lg hover:border-rose-400/30 transition-all">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-rose-500/20 text-rose-400 border border-rose-400/30 flex items-center justify-center">
+                <ShieldAlert className="w-5 h-5" />
+              </div>
+                <div>
+                  <span className="text-xs text-rose-400 font-bold block">Hospital Vets of All</span>
+                  <a
+                    href={`tel:${BUDDY_PROFILE.humans.phone.replace(/[^0-9]/g, '')}`}
+                    className="text-sm font-bold text-white hover:text-emerald-300 transition-colors"
+                  >
+                    {BUDDY_PROFILE.humans.vetPhone}
+                  </a>
+                </div>
+              </div>
+              <a
+                href={`tel:${BUDDY_PROFILE.humans.phone.replace(/[^0-9]/g, '')}`}
+                className="px-3.5 py-1.5 rounded-full bg-rose-500/20 border border-rose-400/40 text-rose-300 text-xs font-bold hover:bg-rose-500/30 transition-all"
+              >
+                Ligar
+              </a>
+            </div>
+
+
+            {/* Emergency Vet Info */}
+            {/* <div className="mt-5 p-3.5 rounded-2xl bg-rose-500/15 border border-rose-500/30 flex items-start gap-2.5 text-xs text-rose-200">
+              <ShieldAlert className="w-4 h-4 text-rose-400 flex-shrink-0 mt-0.5" />
+              <div>
+                <strong className="block font-bold text-rose-300">Veterinário de Emergência:</strong>
+                <span className="text-sm font-bold text-white">{BUDDY_PROFILE.humans.emergencyVet}</span>
+              </div>
+            </div> */}
+
+
           </div>
         </div>
-      </div>
     </div>
   );
 };

@@ -69,11 +69,11 @@ export const AboutScreen: React.FC<AboutScreenProps> = ({ onOpenPlaydateModal })
     <div className="space-y-6 pb-24 animate-fadeIn">
       {/* Screen Title Banner with Frosted Glass Card */}
       <div className="bg-white/5 backdrop-blur-xl rounded-[24px] sm:rounded-[28px] p-6 shadow-2xl border border-white/10 relative overflow-hidden">
-        <div className="flex flex-col sm:flex-row items-center gap-5">
+        <div className="flex flex-col sm:flex-row items-center gap-10">
           <div className="relative">
             <img
-              src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=400&q=80"
-              alt="Buddy"
+              src="https://res.cloudinary.com/dldj8y8t4/image/upload/v1786834115/IMG_3289_rounded_rn1kdn.jpg"
+              alt="Doug"
               referrerPolicy="no-referrer"
               className="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover border-4 border-cyan-400/40 shadow-xl shadow-cyan-500/20"
             />
@@ -270,11 +270,11 @@ export const AboutScreen: React.FC<AboutScreenProps> = ({ onOpenPlaydateModal })
           </div>
           <div className="p-3 rounded-xl bg-white/5 border border-white/10">
             <span className="text-white/50 block text-[11px]">Microchip</span>
-            <span className="font-bold text-emerald-400">✓ Registrado 24Pet</span>
+            <span className="font-bold text-emerald-400">✓ Não tenho registro</span>
           </div>
           <div className="p-3 rounded-xl bg-white/5 border border-white/10">
             <span className="text-white/50 block text-[11px]">Veterinário</span>
-            <span className="font-bold text-white">Hospital Veterinário Mission</span>
+            <span className="font-bold text-white">Hospital Veterinário Vets of All (11 99310-1401)</span>
           </div>
         </div>
       </div>

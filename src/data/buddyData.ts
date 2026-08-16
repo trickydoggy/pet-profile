@@ -5,18 +5,18 @@ export const BUDDY_PROFILE = {
   headline: "Olá, eu sou o Doug!",
   tagline: "O cachorro mais bonito do mundo!",
   birthday: '14 de Setembro de 2015',
-  age: '11 anos de idade',
+  age: '10 anos de idade',
   breed: 'Pug',
   neighborhood: 'Vila Industria, São Paulo, SP',
   weight: '11 kg (24 lbs)',
   color: 'Creme',
   status: 'Pronto para comer um bifinho 😋',
   traits: [
-    { label: 'Alta Energia', type: 'sage' as const },
+    { label: 'Calmo', type: 'sage' as const },
     { label: 'Amigável', type: 'peach' as const },
-    { label: 'Obsessão por Bolinhas', type: 'terracotta' as const },
-    { label: 'Fã de Copinho de Chantilly', type: 'sage' as const },
-    { label: 'Bons Companheiros', type: 'peach' as const },
+    { label: 'Obsessão por comida', type: 'terracotta' as const },
+    { label: 'Fã de Petiscos', type: 'sage' as const },
+    { label: 'Bom Companheiro', type: 'peach' as const },
   ],
   stats: {
     friendliness: 100,
@@ -28,12 +28,14 @@ export const BUDDY_PROFILE = {
   },
   humans: {
     names: 'Edson & Denise',
-    phone: '(11) 9.9931-8891',
+    phone: '(11) 99931-8891',
+    phone1: '(11) 99133-5881',
+    vetPhone: '(11) 99310-1401',
     email: 'trickyeds@gmail.com',
-    instagram: '@buddy_in_bernal',
-    emergencyVet: 'Hospital Veterinário Mission (415) 552-1969',
+    instagram: '@trickydoggy',
+    emergencyVet: 'Vets of All',
   },
-  heroImage: 'https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=1200&q=80',
+  heroImage: 'https://res.cloudinary.com/dldj8y8t4/image/upload/v1786829750/IMG_3289_kzqwdt.jpg',
 };
 
 export const NEIGHBORHOOD_SPOTS: NeighborhoodSpot[] = [

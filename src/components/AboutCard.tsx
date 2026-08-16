@@ -30,28 +30,30 @@ export const AboutCard: React.FC<AboutCardProps> = ({ onViewDetails }) => {
 
       {/* Info List with cake and paw icons */}
       <div className="space-y-3.5 mb-6 text-white/80 relative z-10">
+
+         {/* Breed */}
+        <div className="flex items-center gap-3.5 text-base sm:text-lg font-medium text-white">
+          <div className="w-8 h-8 rounded-xl bg-cyan-500/20 border border-cyan-400/30 text-cyan-300 flex items-center justify-center flex-shrink-0 shadow-sm">
+            <PawPrint className="w-4 h-4" />
+          </div>
+          <span>Eu sou um {BUDDY_PROFILE.breed}</span>
+        </div>
+
         {/* Birthday */}
         <div className="flex items-center gap-3.5 text-base sm:text-lg font-medium text-white">
           <div className="w-8 h-8 rounded-xl bg-purple-500/20 border border-purple-400/30 text-purple-300 flex items-center justify-center flex-shrink-0 shadow-sm">
             <Cake className="w-4 h-4" />
           </div>
-          <span>{BUDDY_PROFILE.birthday}</span>
+          <span>Nasci em {BUDDY_PROFILE.birthday}</span>
         </div>
 
-        {/* Breed */}
-        <div className="flex items-center gap-3.5 text-base sm:text-lg font-medium text-white">
-          <div className="w-8 h-8 rounded-xl bg-cyan-500/20 border border-cyan-400/30 text-cyan-300 flex items-center justify-center flex-shrink-0 shadow-sm">
-            <PawPrint className="w-4 h-4" />
-          </div>
-          <span>{BUDDY_PROFILE.breed}</span>
-        </div>
       </div>
 
       {/* Trait Chips / Pills with Frosted Glass aesthetic */}
       <div className="flex flex-wrap items-center gap-2.5 relative z-10">
         {/* High Energy Pill (Frosted Emerald) */}
         <span className="px-4 py-1.5 rounded-full bg-emerald-500/20 text-emerald-300 text-sm font-semibold tracking-wide shadow-sm border border-emerald-400/30">
-          Alta Energia
+          Calmo
         </span>
 
         {/* Friendly Pill (Frosted Cyan) */}
@@ -61,7 +63,7 @@ export const AboutCard: React.FC<AboutCardProps> = ({ onViewDetails }) => {
 
         {/* Ball Obsessed Pill (Frosted Purple) */}
         <span className="px-3.5 py-1.5 rounded-full bg-purple-500/20 text-purple-300 text-sm font-medium border border-purple-400/30">
-          Louco por Bolinhas 🎾
+          Louco por bifinho
         </span>
       </div>
     </div>
