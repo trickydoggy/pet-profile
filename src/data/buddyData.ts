@@ -188,48 +188,57 @@ export const GALLERY_PHOTOS: GalleryPhoto[] = [
 export const DAILY_ROUTINE: DailyRoutineItem[] = [
   {
     time: '07:00',
-    activity: 'Acordar & Carinho na Barriga',
+    activity: 'Acordar & Tomar o café da manhã',
     icon: 'Sun',
-    description: 'Toque suave com a pata na testa do humano para confirmar que o horário do café da manhã está oficialmente aberto.',
+    description: 'Hora de acordar o humano para tomar o café da manhã.',
   },
   {
     time: '07:45',
-    activity: 'Corrida no Topo do Bernal Hill',
+    activity: 'Fazer um visitinha na escadaria do prédio',
     icon: 'Footprints',
-    description: 'Sessão de buscar bolinha sem coleira com os cães da manhã enquanto os humanos tomam café.',
+    description: 'Depois desta andadinha na escada gosto de receber um bifinho',
   },
   {
     time: '09:00',
-    activity: 'Parada para Copinho de Chantilly no Café',
+    activity: 'Tirar uma sonequinha no sofá',
     icon: 'Coffee',
-    description: 'Cumprimentando cada vizinho simpático do lado de fora da padaria.',
+    description: 'Gosto de tirar uma sonequinha no sofá depois de comer.',
   },
   {
     time: '11:00 – 15:00',
-    activity: 'Apoio de Pés no Home Office',
+    activity: 'Já começo a sentir fome novamente',
     icon: 'Bed',
-    description: 'Soneca profunda, mexendo as patas perseguindo esquilos dos sonhos sob o raio de sol.',
+    description: 'Já começo a sentir fome novamente, hora de pedir um bifinho.',
   },
   {
-    time: '17:30',
-    activity: 'Caminhada & Safari de Cheiros no Bairro',
-    icon: 'MapPin',
-    description: 'Investigando cada hidrante e tronco de árvore na Cortland e Mission Street.',
+    time: '15:30',
+    activity: 'Tirar outra soneca assistindo TV',
+    icon: 'Coffee',
+    description: 'Ahhh, mas que delicia tirar uma soneca assistindo TV.',
   },
   {
     time: '20:30',
-    activity: 'Maratona de Cabo de Guerra & Aconchego',
+    activity: 'Depois de jantar ficar junto do meu amigo humano',
     icon: 'Heart',
-    description: 'Trazendo o ouriço de pelúcia favorito para o sofá na hora do filme noturno.',
+    description: 'Depois de jantar ficar junto do meu amigo humano é a melhor coisa do mundo.',
   },
 ];
 
 export const FAVORITE_THINGS = [
-  { name: 'Brinquedo Kong com Pasta de Amendoim', desc: 'Pasta de amendoim congelada com purê de banana', emoji: '🥜' },
-  { name: 'Bolinhas de Tênis Amarelas Barulhentas', desc: 'Busca a bolinha até o braço do humano cansar', emoji: '🎾' },
-  { name: 'Perseguir Raio de Sol', desc: 'Mudando de lugar no chão de madeira o dia todo', emoji: '☀️' },
-  { name: 'Cumprimentar o Carteiro', desc: 'Acredita que qualquer pessoa com pacote é seu melhor amigo', emoji: '📦' },
-  { name: 'Saltar nas Ondas da Ocean Beach', desc: 'Zero medo das ondas geladas do Pacífico', emoji: '🌊' },
-  { name: 'Carinho Atrás das Orelhas', desc: 'Gatilho garantido para chacoalhar a perninha', emoji: '🐾' },
+  { name: 'Carinho na barriga', desc: 'Uma massagem na barriga é tudo de bom!', emoji: '🐶' },
+  { name: 'Dormir no sofá assistindo TV', desc: 'Gosto de ver TV e dormir no sofá.', emoji: '📺' },
+  { name: 'Bifinho a qualquer hora', desc: 'Meu petisco favorito no mundo!', emoji: '🦴' },
+  { name: 'Tomar banho no petshop', desc: 'Fico cheiroso e ganho petiscos!', emoji: '🛀' },
+  { name: 'Passear pelo prédio', desc: 'Gosto de cumprimentar os vizinhos.', emoji: '🧍‍♂️'},
+  { name: 'Estar sempre acompanhado de humanos', desc: 'Gosto de ter companhia o tempo todo!', emoji: '🧍'},
+];
+
+export const DISLIKE_THINGS = [
+  { name: 'Cortar as unhas', desc: 'Acham que é rapidinho, mas pra mim é uma eternidade!', emoji: '✂️' },
+  { name: 'Limpar o ouvido', desc: 'Esse cotonete incomoda demais!', emoji: '👂' },
+  { name: 'Colocar colírio', desc: 'É um liquido gelado!', emoji: '👀' },
+  { name: 'Ficar sozinho', desc: 'Quero sempre uma companhia por perto!', emoji: '😔' },
+  { name: 'Banho na piscina', desc: 'Parece que vou afundar na piscina!', emoji: '🌊' },
+  { name: 'Andar muito no calor', desc: 'Meu corpo esquenta muito rápido!', emoji: '☀️' },
 ];
 

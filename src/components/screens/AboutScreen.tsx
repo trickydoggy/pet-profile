@@ -16,9 +16,10 @@ import {
   Bed,
   MapPin,
   CalendarHeart,
+  Frown,
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
-import { BUDDY_PROFILE, DAILY_ROUTINE, FAVORITE_THINGS } from '../../data/buddyData';
+import { BUDDY_PROFILE, DAILY_ROUTINE, FAVORITE_THINGS, DISLIKE_THINGS } from '../../data/buddyData';
 
 interface AboutScreenProps {
   onOpenPlaydateModal: () => void;
@@ -31,7 +32,7 @@ export const AboutScreen: React.FC<AboutScreenProps> = ({ onOpenPlaydateModal })
 
   const giveTreat = (e: React.MouseEvent) => {
     setTreatsGiven((prev) => prev + 1);
-    setLastAction('Crunch crunch! Buddy says woof & thank you! 🍪');
+    setLastAction('Croc, croc! O Doug manda um "au-au" e um agradecimento! 🍪');
 
     const rect = e.currentTarget.getBoundingClientRect();
     const x = (rect.left + rect.width / 2) / window.innerWidth;
@@ -49,7 +50,7 @@ export const AboutScreen: React.FC<AboutScreenProps> = ({ onOpenPlaydateModal })
 
   const giveBellyRub = (e: React.MouseEvent) => {
     setBellyRubs((prev) => prev + 1);
-    setLastAction('Thump-thump-thump! Back leg kicking with pure joy! 🐾');
+    setLastAction('Tump-tump-tump! A patinha acenando de pura alegria! 🐾');
 
     const rect = e.currentTarget.getBoundingClientRect();
     const x = (rect.left + rect.width / 2) / window.innerWidth;
@@ -132,10 +133,14 @@ export const AboutScreen: React.FC<AboutScreenProps> = ({ onOpenPlaydateModal })
         </h3>
         <div className="text-sm sm:text-base text-white/80 leading-relaxed space-y-3">
           <p>
-            Au au! Eu mudei para o ensolarado bairro de Bernal Heights em San Francisco quando eu era apenas uma bolinha de pelos de 8 semanas. Desde a minha primeira caminhada no morro de Bernal Hill, eu sabia que este topo gramado e ventilado era o meu verdadeiro reino.
+            Nós éramos em 3 irmãos e disseram que éramos todos iguais, mas eu tive a sorte de ser escolhido por essa família que me ama mais do que tudo no mundo! Desde a infância sempre fui muito feliz, e adorava passear pela vizinhança e cheirar todos os cantos para conhecer a região. Sou tranquilo com todos e estraguei poucos chinelos. Isto foi só quando os meus dentes estavam crescendo. Outro coisa de que me orgulho é que eu aprendi a fazer xixi no tapete higiênico sem precisar usar o pipi dog.
           </p>
           <p>
-            Eu acredito que cada humano andando pela Cortland Avenue veio ao mundo com o propósito de me dar carinho atrás das orelhas, e cada cão no Parque da Luna se torna meu melhor amigo instantaneamente. Quando não estou buscando bolinhas de tênis na velocidade da luz, me dedico ao trabalho de consultor de sonecas em tempo integral e detector de embalagens de queijo.
+            Gosto de dormir no cantinho do sofá e agora que estou ficando mais velhinho parece que tenho mais sono. Também gosto de passear mesmo que por um curto período, na verdade eu não consigo andar por muito tempo. Por causa do meu fucinho eu tenho pouco fôlego e não aguento muito esforço físico. Também não gosto de andar de carro. Fico muito ansioso e fico ofegante por um bom tempinho depois.
+          </p>
+          <p>
+            Uma vez eu quase morri e fiquei internado no hospital por 2 dias, por causa de uma caminhada extensa em um dia muito quente. Desde então, só posso passear por curtos períodos e evito exercícios extenuantes, especialmente em climas quentes. 
+            Eu também estou perdendo um pouca da visão e audição, por isso  gosto de ficar perto dos meus amigos humanos para que possam me auxiliar se necessário. Eles são muito carinhosos comigo e por isto sou muito feliz. Estou um pouco gordinho por isto tenho que comer ração especial para obesidade. Mesmo assim não dispenso uma bom bifinho de Maça e Cenoura.
           </p>
         </div>
 
@@ -176,17 +181,17 @@ export const AboutScreen: React.FC<AboutScreenProps> = ({ onOpenPlaydateModal })
           <div>
             <div className="flex justify-between text-xs sm:text-sm font-bold text-white mb-1.5">
               <span>Energia & Vontade de Brincar</span>
-              <span className="text-emerald-400">94% (Sem Parar)</span>
+              <span className="text-emerald-400">40% (Estou ficando velhinho....snif!)</span>
             </div>
             <div className="w-full h-3 rounded-full bg-white/10 overflow-hidden border border-white/10">
-              <div className="h-full rounded-full bg-gradient-to-r from-emerald-500 to-teal-400 shadow-[0_0_10px_#34d399]" style={{ width: '94%' }} />
+              <div className="h-full rounded-full bg-gradient-to-r from-emerald-500 to-teal-400 shadow-[0_0_10px_#34d399]" style={{ width: '40%' }} />
             </div>
           </div>
 
           <div>
             <div className="flex justify-between text-xs sm:text-sm font-bold text-white mb-1.5">
               <span>Motivação por Petiscos & Radar de Cheiro</span>
-              <span className="text-purple-400">100% (Detecta Queijo a 2km)</span>
+              <span className="text-purple-400">100% (Detecta bifinho a 2km)</span>
             </div>
             <div className="w-full h-3 rounded-full bg-white/10 overflow-hidden border border-white/10">
               <div className="h-full rounded-full bg-gradient-to-r from-purple-500 to-pink-500 shadow-[0_0_10px_#c084fc]" style={{ width: '100%' }} />
@@ -196,10 +201,10 @@ export const AboutScreen: React.FC<AboutScreenProps> = ({ onOpenPlaydateModal })
           <div>
             <div className="flex justify-between text-xs sm:text-sm font-bold text-white mb-1.5">
               <span>Natação & Pular Ondas</span>
-              <span className="text-cyan-400">88% (Mestre das Ondas)</span>
+              <span className="text-cyan-400">10% (Detesto Piscina)</span>
             </div>
             <div className="w-full h-3 rounded-full bg-white/10 overflow-hidden border border-white/10">
-              <div className="h-full rounded-full bg-gradient-to-r from-cyan-400 to-blue-600 shadow-[0_0_10px_#38bdf8]" style={{ width: '88%' }} />
+              <div className="h-full rounded-full bg-gradient-to-r from-cyan-400 to-blue-600 shadow-[0_0_10px_#38bdf8]" style={{ width: '10%' }} />
             </div>
           </div>
         </div>
@@ -209,7 +214,7 @@ export const AboutScreen: React.FC<AboutScreenProps> = ({ onOpenPlaydateModal })
       <div className="bg-white/5 backdrop-blur-xl rounded-[24px] p-6 shadow-2xl border border-white/10">
         <h3 className="text-lg sm:text-xl font-bold text-white font-heading mb-4 flex items-center gap-2">
           <Clock className="w-5 h-5 text-cyan-400" />
-          <span>Um Dia na Vida do Buddy</span>
+          <span>Um dia na vida do Doug</span>
         </h3>
         <div className="space-y-4 relative before:absolute before:left-4 before:top-2 before:bottom-2 before:w-0.5 before:bg-white/15">
           {DAILY_ROUTINE.map((item, idx) => (
@@ -231,9 +236,9 @@ export const AboutScreen: React.FC<AboutScreenProps> = ({ onOpenPlaydateModal })
 
       {/* Favorite Things */}
       <div className="bg-white/5 backdrop-blur-xl rounded-[24px] p-6 shadow-2xl border border-white/10">
-        <h3 className="text-lg sm:text-xl font-bold text-white font-heading mb-4 flex items-center gap-2">
-          <Smile className="w-5 h-5 text-cyan-400" />
-          <span>Coisas Favoritas</span>
+        <h3 className="text-lg sm:text-xl font-bold text-green-400 font-heading mb-4 flex items-center gap-2">
+          <Smile className="w-5 h-5 text-green-400" />
+          <span>Coisas que eu gosto</span>
         </h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {FAVORITE_THINGS.map((fav, idx) => (
@@ -253,6 +258,31 @@ export const AboutScreen: React.FC<AboutScreenProps> = ({ onOpenPlaydateModal })
         </div>
       </div>
 
+      {/* Dislikes */}
+      <div className="bg-white/5 backdrop-blur-xl rounded-[24px] p-6 shadow-2xl border border-white/10">
+        <h3 className="text-lg sm:text-xl font-bold text-red-400 font-heading mb-4 flex items-center gap-2">
+          <Frown className="w-5 h-5 text-red-400" />
+          <span>Coisas que eu não gosto</span>
+        </h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {DISLIKE_THINGS.map((dislike, idx) => (
+            <div
+              key={idx}
+              className="p-3.5 rounded-2xl bg-white/5 border border-white/10 flex items-start gap-3 hover:bg-white/10 transition-colors"
+            >
+              <span className="text-2xl">{dislike.emoji}</span>
+              <div>
+                <h4 className="text-xs sm:text-sm font-bold text-white">
+                  {dislike.name}
+                </h4>
+                <p className="text-xs text-white/70 mt-0.5">{dislike.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>    
+
+
       {/* Health & Care Information Card */}
       <div className="bg-white/5 backdrop-blur-xl rounded-[24px] p-6 shadow-2xl border border-white/10">
         <h3 className="text-lg sm:text-xl font-bold text-white font-heading mb-3 flex items-center gap-2">
@@ -270,17 +300,17 @@ export const AboutScreen: React.FC<AboutScreenProps> = ({ onOpenPlaydateModal })
           </div>
           <div className="p-3 rounded-xl bg-white/5 border border-white/10">
             <span className="text-white/50 block text-[11px]">Microchip</span>
-            <span className="font-bold text-emerald-400">✓ Não tenho registro</span>
+            <span className="font-bold text-red-400">✓ Não tenho registro</span>
           </div>
           <div className="p-3 rounded-xl bg-white/5 border border-white/10">
             <span className="text-white/50 block text-[11px]">Veterinário</span>
-            <span className="font-bold text-white">Hospital Veterinário Vets of All (11 99310-1401)</span>
+            <span className="font-bold text-white">Hospital Vets of All (11 99310-1401)</span>
           </div>
         </div>
       </div>
 
       {/* Bottom CTA to Book Playdate */}
-      <div className="p-6 rounded-[24px] bg-gradient-to-r from-cyan-600/80 via-blue-600/80 to-purple-600/80 backdrop-blur-xl text-white text-center shadow-2xl border border-white/20">
+      {/* <div className="p-6 rounded-[24px] bg-gradient-to-r from-cyan-600/80 via-blue-600/80 to-purple-600/80 backdrop-blur-xl text-white text-center shadow-2xl border border-white/20">
         <h3 className="text-xl font-bold font-heading mb-1 text-white">
           Acha que nossos cães seriam grandes amigos?
         </h3>
@@ -295,7 +325,7 @@ export const AboutScreen: React.FC<AboutScreenProps> = ({ onOpenPlaydateModal })
           <CalendarHeart className="w-4 h-4 text-cyan-600" />
           <span>Solicitar Encontro Canino</span>
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };

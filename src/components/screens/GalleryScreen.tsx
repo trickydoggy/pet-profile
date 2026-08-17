@@ -69,7 +69,7 @@ export const GalleryScreen: React.FC<GalleryScreenProps> = ({ onSelectPhoto }) =
           <div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-white font-heading flex items-center gap-2">
               <Camera className="w-6 h-6 text-cyan-400" />
-              <span>Álbum de Fotos do Buddy</span>
+              <span>Álbum de Fotos do Doug</span>
             </h2>
             <p className="text-xs sm:text-sm text-white/70 mt-1">
               Aventuras, ziguezagues, sonecas no parque e lembranças de filhote.
