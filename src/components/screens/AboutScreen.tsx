@@ -136,7 +136,7 @@ export const AboutScreen: React.FC<AboutScreenProps> = ({ onOpenPlaydateModal })
             Nós éramos em 3 irmãos e disseram que éramos todos iguais, mas eu tive a sorte de ser escolhido por essa família que me ama mais do que tudo no mundo! Desde a infância sempre fui muito feliz, e adorava passear pela vizinhança e cheirar todos os cantos para conhecer a região. Sou tranquilo com todos e estraguei poucos chinelos. Isto foi só quando os meus dentes estavam crescendo. Outro coisa de que me orgulho é que eu aprendi a fazer xixi no tapete higiênico sem precisar usar o pipi dog.
           </p>
           <p>
-            Gosto de dormir no cantinho do sofá e agora que estou ficando mais velhinho parece que tenho mais sono. Também gosto de passear mesmo que por um curto período, na verdade eu não consigo andar por muito tempo. Por causa do meu fucinho eu tenho pouco fôlego e não aguento muito esforço físico. Também não gosto de andar de carro. Fico muito ansioso e fico ofegante por um bom tempinho depois.
+            Gosto de dormir no cantinho do sofá e agora que estou ficando mais velhinho parece que tenho mais sono. Também gosto de passear mesmo que por um curto período, na verdade eu não consigo andar por muito tempo. Por causa do meu focinho eu tenho pouco fôlego e não aguento muito esforço físico. Também não gosto de andar de carro. Fico muito ansioso e fico ofegante por um bom tempinho depois.
           </p>
           <p>
             Uma vez eu quase morri e fiquei internado no hospital por 2 dias, por causa de uma caminhada extensa em um dia muito quente. Desde então, só posso passear por curtos períodos e evito exercícios extenuantes, especialmente em climas quentes. 
