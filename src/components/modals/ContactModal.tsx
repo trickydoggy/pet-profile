@@ -183,7 +183,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                   Hospital Vets of All
                 </span>
                 <a
-                  href={`tel:${BUDDY_PROFILE.humans.phone.replace(/[^0-9]/g, "")}`}
+                  href={`tel:${BUDDY_PROFILE.humans.vetPhone.replace(/[^0-9]/g, "")}`}
                   className="text-sm font-bold text-white hover:text-emerald-300 transition-colors"
                 >
                   {BUDDY_PROFILE.humans.vetPhone}
@@ -191,7 +191,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
               </div>
             </div>
             <a
-              href={`tel:${BUDDY_PROFILE.humans.phone.replace(/[^0-9]/g, "")}`}
+              href={`tel:${BUDDY_PROFILE.humans.vetPhone.replace(/[^0-9]/g, "")}`}
               className="px-3.5 py-1.5 rounded-full bg-rose-500/20 border border-rose-400/40 text-rose-300 text-xs font-bold hover:bg-rose-500/30 transition-all"
             >
               Ligar
