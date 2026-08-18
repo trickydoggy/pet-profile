@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   X,
   Calendar,
@@ -10,10 +10,10 @@ import {
   CheckCircle2,
   Download,
   Send,
-} from 'lucide-react';
-import confetti from 'canvas-confetti';
-import { NEIGHBORHOOD_SPOTS, BUDDY_PROFILE } from '../../data/buddyData';
-import { NeighborhoodSpot } from '../../types';
+} from "lucide-react";
+import confetti from "canvas-confetti";
+import { NEIGHBORHOOD_SPOTS, BUDDY_PROFILE } from "../../data/buddyData";
+import { NeighborhoodSpot } from "../../types";
 
 interface PlaydateModalProps {
   isOpen: boolean;
@@ -26,18 +26,22 @@ export const PlaydateModal: React.FC<PlaydateModalProps> = ({
   onClose,
   initialSpot,
 }) => {
-  const [dogName, setDogName] = useState('');
-  const [dogBreed, setDogBreed] = useState('');
-  const [energyLevel, setEnergyLevel] = useState<'chill' | 'medium' | 'high' | 'zoomies'>('high');
-  const [ownerName, setOwnerName] = useState('');
-  const [ownerEmail, setOwnerEmail] = useState('');
-  const [ownerPhone, setOwnerPhone] = useState('');
+  const [dogName, setDogName] = useState("");
+  const [dogBreed, setDogBreed] = useState("");
+  const [energyLevel, setEnergyLevel] = useState<
+    "chill" | "medium" | "high" | "zoomies"
+  >("high");
+  const [ownerName, setOwnerName] = useState("");
+  const [ownerEmail, setOwnerEmail] = useState("");
+  const [ownerPhone, setOwnerPhone] = useState("");
   const [selectedSpotId, setSelectedSpotId] = useState(
-    initialSpot ? initialSpot.id : NEIGHBORHOOD_SPOTS[0].id
+    initialSpot ? initialSpot.id : NEIGHBORHOOD_SPOTS[0].id,
   );
-  const [preferredDate, setPreferredDate] = useState('2026-08-16');
-  const [preferredTime, setPreferredTime] = useState('10:00 AM (Morning Summit)');
-  const [notes, setNotes] = useState('');
+  const [preferredDate, setPreferredDate] = useState("2026-08-16");
+  const [preferredTime, setPreferredTime] = useState(
+    "10:00 AM (Morning Summit)",
+  );
+  const [notes, setNotes] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
   if (!isOpen) return null;
@@ -50,33 +54,34 @@ export const PlaydateModal: React.FC<PlaydateModalProps> = ({
       particleCount: 60,
       spread: 80,
       origin: { y: 0.6 },
-      colors: ['#22d3ee', '#38bdf8', '#a855f7', '#34d399', '#ffffff'],
+      colors: ["#22d3ee", "#38bdf8", "#a855f7", "#34d399", "#ffffff"],
     });
   };
 
   const selectedSpot =
-    NEIGHBORHOOD_SPOTS.find((s) => s.id === selectedSpotId) || NEIGHBORHOOD_SPOTS[0];
+    NEIGHBORHOOD_SPOTS.find((s) => s.id === selectedSpotId) ||
+    NEIGHBORHOOD_SPOTS[0];
 
   const handleDownloadIcs = () => {
     const icsData = [
-      'BEGIN:VCALENDAR',
-      'VERSION:2.0',
-      'PRODID:-//Buddy World//Playdate Scheduler//EN',
-      'BEGIN:VEVENT',
-      `SUMMARY:Doggy Playdate with Buddy & ${dogName || 'Dog Friend'}! 🐾`,
+      "BEGIN:VCALENDAR",
+      "VERSION:2.0",
+      "PRODID:-//Buddy World//Playdate Scheduler//EN",
+      "BEGIN:VEVENT",
+      `SUMMARY:Doggy Playdate with Buddy & ${dogName || "Dog Friend"}! 🐾`,
       `DESCRIPTION:Doggy Playdate at ${selectedSpot.name}. Contact: ${BUDDY_PROFILE.humans.phone}`,
       `LOCATION:${selectedSpot.name}, ${selectedSpot.address}`,
-      'DTSTART:20260816T170000Z',
-      'DTEND:20260816T180000Z',
-      'STATUS:CONFIRMED',
-      'END:VEVENT',
-      'END:VCALENDAR',
-    ].join('\r\n');
+      "DTSTART:20260816T170000Z",
+      "DTEND:20260816T180000Z",
+      "STATUS:CONFIRMED",
+      "END:VEVENT",
+      "END:VCALENDAR",
+    ].join("\r\n");
 
-    const blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8' });
-    const link = document.createElement('a');
+    const blob = new Blob([icsData], { type: "text/calendar;charset=utf-8" });
+    const link = document.createElement("a");
     link.href = window.URL.createObjectURL(blob);
-    link.setAttribute('download', 'buddy-playdate.ics');
+    link.setAttribute("download", "buddy-playdate.ics");
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -103,10 +108,12 @@ export const PlaydateModal: React.FC<PlaydateModalProps> = ({
                 <span>Solicitação de Encontro</span>
               </div>
               <h3 className="text-2xl font-extrabold text-white font-heading">
-                Marcar Encontro com o Buddy
+                Marcar Encontro com o Doug
               </h3>
               <p className="text-xs sm:text-sm text-white/70 mt-1">
-                O Buddy ama conhecer novos amigos peludos! Preencha este formulário rápido e seus humanos (Sarah & Mark) confirmarão em algumas horas.
+                O Doug ama conhecer novos amigos peludos! Preencha este
+                formulário rápido e seus humanos (Edson & Denise) confirmarão em
+                algumas horas.
               </p>
             </div>
 
@@ -154,10 +161,10 @@ export const PlaydateModal: React.FC<PlaydateModalProps> = ({
                   </label>
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
                     {[
-                      { id: 'chill', label: 'Cheirador Calmo 🌿' },
-                      { id: 'medium', label: 'Trote Moderado 🐾' },
-                      { id: 'high', label: 'Muita Bolinha 🎾' },
-                      { id: 'zoomies', label: 'Modo Fênix/Corrida ⚡' },
+                      { id: "chill", label: "Cheirador Calmo 🌿" },
+                      { id: "medium", label: "Trote Moderado 🐾" },
+                      { id: "high", label: "Muita Bolinha 🎾" },
+                      { id: "zoomies", label: "Modo Fênix/Corrida ⚡" },
                     ].map((lvl) => (
                       <button
                         key={lvl.id}
@@ -165,8 +172,8 @@ export const PlaydateModal: React.FC<PlaydateModalProps> = ({
                         onClick={() => setEnergyLevel(lvl.id as any)}
                         className={`p-2 rounded-xl text-center font-bold border transition-all ${
                           energyLevel === lvl.id
-                            ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white border-cyan-400/50 shadow-md'
-                            : 'bg-white/5 text-white/70 border-white/10 hover:bg-white/10'
+                            ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-white border-cyan-400/50 shadow-md"
+                            : "bg-white/5 text-white/70 border-white/10 hover:bg-white/10"
                         }`}
                       >
                         {lvl.label}
@@ -193,7 +200,11 @@ export const PlaydateModal: React.FC<PlaydateModalProps> = ({
                     className="w-full px-3.5 py-2.5 rounded-xl border border-white/20 bg-slate-800 text-white text-sm font-medium focus:outline-none focus:ring-2 focus:ring-cyan-400"
                   >
                     {NEIGHBORHOOD_SPOTS.map((s) => (
-                      <option key={s.id} value={s.id} className="bg-slate-800 text-white">
+                      <option
+                        key={s.id}
+                        value={s.id}
+                        className="bg-slate-800 text-white"
+                      >
                         {s.name} ({s.category} • {s.distance})
                       </option>
                     ))}
@@ -223,10 +234,18 @@ export const PlaydateModal: React.FC<PlaydateModalProps> = ({
                       onChange={(e) => setPreferredTime(e.target.value)}
                       className="w-full px-3.5 py-2 rounded-xl border border-white/20 bg-slate-800 text-white text-sm focus:outline-none focus:ring-2 focus:ring-cyan-400"
                     >
-                      <option className="bg-slate-800 text-white">08:00 (Passeio do Amanhecer)</option>
-                      <option className="bg-slate-800 text-white">10:00 (Manhã no Morro)</option>
-                      <option className="bg-slate-800 text-white">16:00 (Corrida da Tarde no Parque)</option>
-                      <option className="bg-slate-800 text-white">17:30 (Pôr do Sol / Hora Dourada)</option>
+                      <option className="bg-slate-800 text-white">
+                        08:00 (Passeio do Amanhecer)
+                      </option>
+                      <option className="bg-slate-800 text-white">
+                        10:00 (Manhã no Morro)
+                      </option>
+                      <option className="bg-slate-800 text-white">
+                        16:00 (Corrida da Tarde no Parque)
+                      </option>
+                      <option className="bg-slate-800 text-white">
+                        17:30 (Pôr do Sol / Hora Dourada)
+                      </option>
                     </select>
                   </div>
                 </div>
@@ -307,14 +326,24 @@ export const PlaydateModal: React.FC<PlaydateModalProps> = ({
                 Convite de Encontro Enviado! 🎉
               </h3>
               <p className="text-sm text-white/70 mt-2 max-w-sm mx-auto leading-relaxed">
-                Os humanos do Buddy receberam sua mensagem para o cão <strong>{dogName || 'seu pet'}</strong> no local <strong>{selectedSpot.name}</strong>. O rabo do Buddy já está abanando!
+                Os humanos do Buddy receberam sua mensagem para o cão{" "}
+                <strong>{dogName || "seu pet"}</strong> no local{" "}
+                <strong>{selectedSpot.name}</strong>. O rabo do Buddy já está
+                abanando!
               </p>
             </div>
 
             <div className="p-4 bg-white/5 rounded-2xl border border-white/10 text-left text-xs text-white/80 space-y-1.5">
-              <p><strong>📍 Local:</strong> {selectedSpot.name} ({selectedSpot.address})</p>
-              <p><strong>📅 Data:</strong> {preferredDate} • {preferredTime}</p>
-              <p><strong>📞 Contato:</strong> {ownerPhone || 'Salvo'}</p>
+              <p>
+                <strong>📍 Local:</strong> {selectedSpot.name} (
+                {selectedSpot.address})
+              </p>
+              <p>
+                <strong>📅 Data:</strong> {preferredDate} • {preferredTime}
+              </p>
+              <p>
+                <strong>📞 Contato:</strong> {ownerPhone || "Salvo"}
+              </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3 pt-2">
