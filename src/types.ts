@@ -8,7 +8,7 @@ export interface Trait {
 export interface NeighborhoodSpot {
   id: string;
   name: string;
-  category: 'park' | 'cafe' | 'bakery' | 'trail';
+  category: 'park' | 'cafe' | 'bakery' | 'trail' | 'shopping';
   address: string;
   distance: string;
   description: string;

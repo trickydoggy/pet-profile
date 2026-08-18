@@ -28,9 +28,9 @@ export const BUDDY_PROFILE = {
   },
   humans: {
     names: 'Edson & Denise',
-    phone: '11999318891',
-    phone1: '11991335881',
-    vetPhone: '11993101401',
+    phone: '999318891',
+    phone1: '991335881',
+    vetPhone: '993101401',
     email: 'trickyeds@gmail.com',
     instagram: '@trickydoggy',
     emergencyVet: 'Vets of All',
@@ -40,21 +40,21 @@ export const BUDDY_PROFILE = {
 
 export const NEIGHBORHOOD_SPOTS: NeighborhoodSpot[] = [
   {
-    id: 'bernal-heights-park',
-    name: 'Parque Bernal Heights',
-    category: 'park',
-    address: 'Bernal Heights Blvd, SF, CA 94110',
-    distance: '650 m (8 min a pé)',
-    description: 'Um paraíso canino! Visão 360 graus do horizonte de San Francisco e da ponte Golden Gate. Colinas gramadas enormes e livres de coleira.',
+    id: 'grand-plaza-shopping',
+    name: 'Grand Plaza Shopping',
+    category: 'shopping',
+    address: 'Av. Industrial, 600 - Santo André - SP, 09080-510',
+    distance: '7 km (15 min de carro)',
+    description: 'Um shopping muito legal, com muitas lojas para passear e comprar coisas para pets.',
     buddyRating: 5.0,
-    buddyTip: 'Assista ao pôr do sol no topo do morro! Ótimo para rolar bolinhas de tênis ladeira abaixo.',
+    buddyTip: 'A loja pet é muito legal e tem petiscos gostosos!  Ótimo para rolar bolinhas de tênis ladeira abaixo.',
     amenities: ['Área sem coleira', 'Trilhas para corrida', 'Vista panorâmica', 'Banco do pôr do sol'],
-    imageUrl: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&w=800&q=80',
-    coordinates: { x: 50, y: 35 },
-    bestTimeToVisit: '08:00 e 17:30 (Hora Dourada)',
-    leashRule: 'Sem coleira permitido',
+    imageUrl: 'https://res.cloudinary.com/dldj8y8t4/image/upload/v1787060231/Fachada-Grand-Plaza_tgo3ua.jpg',
+    coordinates: { x:-23.650420969035014, y: -46.53170496124315 },
+    bestTimeToVisit: '10:00 e 22:00',
+    leashRule: 'Apenas com coleira',
   },
-  {
+  /* {
     id: 'lunas-dog-park',
     name: "Parque de Cães da Luna",
     category: 'park',
@@ -113,7 +113,7 @@ export const NEIGHBORHOOD_SPOTS: NeighborhoodSpot[] = [
     coordinates: { x: 74, y: 58 },
     bestTimeToVisit: 'Horário de brunch no fim de semana',
     leashRule: 'Apenas com coleira',
-  },
+  }, */
 ];
 
 export const GALLERY_PHOTOS: GalleryPhoto[] = [

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   MapPin,
   Navigation,
@@ -9,9 +9,9 @@ import {
   CalendarHeart,
   ExternalLink,
   Info,
-} from 'lucide-react';
-import { NEIGHBORHOOD_SPOTS } from '../../data/buddyData';
-import { NeighborhoodSpot } from '../../types';
+} from "lucide-react";
+import { NEIGHBORHOOD_SPOTS } from "../../data/buddyData";
+import { NeighborhoodSpot } from "../../types";
 
 interface LocationScreenProps {
   onSelectSpot: (spot: NeighborhoodSpot) => void;
@@ -22,24 +22,28 @@ export const LocationScreen: React.FC<LocationScreenProps> = ({
   onSelectSpot,
   onPlanPlaydateAtSpot,
 }) => {
-  const [activeCategory, setActiveCategory] = useState<string>('all');
-  const [selectedSpotId, setSelectedSpotId] = useState<string>(NEIGHBORHOOD_SPOTS[0].id);
+  const [activeCategory, setActiveCategory] = useState<string>("all");
+  const [selectedSpotId, setSelectedSpotId] = useState<string>(
+    NEIGHBORHOOD_SPOTS[0].id,
+  );
 
   const categories = [
-    { id: 'all', label: 'Todos os Locais' },
-    { id: 'park', label: 'Parques de Cães 🌲' },
-    { id: 'cafe', label: 'Cafés Pet ☕' },
-    { id: 'bakery', label: 'Padarias Pet 🥨' },
-    { id: 'trail', label: 'Trilhas Panorâmicas 🥾' },
+    { id: "all", label: "Todos os Locais" },
+    { id: "park", label: "Parques de Cães 🌲" },
+    { id: "cafe", label: "Cafés Pet ☕" },
+    { id: "bakery", label: "Padarias Pet 🥨" },
+    { id: "trail", label: "Trilhas Panorâmicas 🥾" },
+    { id: "shopping", label: "Shopping" },
   ];
 
   const filteredSpots =
-    activeCategory === 'all'
+    activeCategory === "all"
       ? NEIGHBORHOOD_SPOTS
       : NEIGHBORHOOD_SPOTS.filter((s) => s.category === activeCategory);
 
   const currentSpot =
-    NEIGHBORHOOD_SPOTS.find((s) => s.id === selectedSpotId) || NEIGHBORHOOD_SPOTS[0];
+    NEIGHBORHOOD_SPOTS.find((s) => s.id === selectedSpotId) ||
+    NEIGHBORHOOD_SPOTS[0];
 
   return (
     <div className="space-y-6 pb-24 animate-fadeIn">
@@ -55,7 +59,8 @@ export const LocationScreen: React.FC<LocationScreenProps> = ({
               Locais Favoritos do Buddy
             </h2>
             <p className="text-xs sm:text-sm text-white/70 mt-1">
-              Os melhores morros sem coleira, cafés com chantilly para cães e padarias pet do bairro.
+              Os melhores morros sem coleira, cafés com chantilly para cães e
+              padarias pet do bairro.
             </p>
           </div>
         </div>
@@ -69,8 +74,8 @@ export const LocationScreen: React.FC<LocationScreenProps> = ({
               onClick={() => setActiveCategory(cat.id)}
               className={`px-3.5 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-all ${
                 activeCategory === cat.id
-                  ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/25 border border-cyan-300/40'
-                  : 'bg-white/10 text-white/70 hover:bg-white/15 border border-white/10'
+                  ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/25 border border-cyan-300/40"
+                  : "bg-white/10 text-white/70 hover:bg-white/15 border border-white/10"
               }`}
             >
               {cat.label}
@@ -91,8 +96,8 @@ export const LocationScreen: React.FC<LocationScreenProps> = ({
             }}
             className={`bg-white/5 backdrop-blur-xl rounded-[24px] p-5 sm:p-6 shadow-2xl border transition-all cursor-pointer ${
               selectedSpotId === spot.id
-                ? 'border-cyan-400/60 ring-2 ring-cyan-400/30'
-                : 'border-white/10 hover:border-white/20'
+                ? "border-cyan-400/60 ring-2 ring-cyan-400/30"
+                : "border-white/10 hover:border-white/20"
             }`}
           >
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-5">
@@ -124,7 +129,10 @@ export const LocationScreen: React.FC<LocationScreenProps> = ({
 
                   <p className="text-xs text-white/60 flex items-center gap-1 mt-1">
                     <MapPin className="w-3 h-3 text-cyan-400" />
-                    <span>{spot.address}</span> • <span className="font-semibold text-cyan-300">{spot.distance}</span>
+                    <span>{spot.address}</span> •{" "}
+                    <span className="font-semibold text-cyan-300">
+                      {spot.distance}
+                    </span>
                   </p>
 
                   <p className="text-xs sm:text-sm text-white/80 mt-2 leading-relaxed">
@@ -136,7 +144,9 @@ export const LocationScreen: React.FC<LocationScreenProps> = ({
                     <span className="font-bold text-cyan-300 block mb-0.5">
                       🐾 Dica Secreta do Buddy:
                     </span>
-                    <span className="text-white/70 italic">"{spot.buddyTip}"</span>
+                    <span className="text-white/70 italic">
+                      "{spot.buddyTip}"
+                    </span>
                   </div>
                 </div>
 
@@ -157,7 +167,7 @@ export const LocationScreen: React.FC<LocationScreenProps> = ({
                     {/* Directions link */}
                     <a
                       href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-                        spot.name + ' ' + spot.address
+                        spot.name + " " + spot.address,
                       )}`}
                       target="_blank"
                       rel="noopener noreferrer"
