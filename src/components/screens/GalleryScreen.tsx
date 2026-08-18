@@ -1,34 +1,45 @@
-import React, { useState } from 'react';
-import { Heart, Sparkles, MapPin, Calendar, Camera, Maximize2, PawPrint } from 'lucide-react';
-import confetti from 'canvas-confetti';
-import { GALLERY_PHOTOS } from '../../data/buddyData';
-import { GalleryPhoto } from '../../types';
+import React, { useState } from "react";
+import {
+  Heart,
+  Sparkles,
+  MapPin,
+  Calendar,
+  Camera,
+  Maximize2,
+  PawPrint,
+} from "lucide-react";
+import confetti from "canvas-confetti";
+import { GALLERY_PHOTOS } from "../../data/buddyData";
+import { GalleryPhoto } from "../../types";
 
 interface GalleryScreenProps {
   onSelectPhoto: (photo: GalleryPhoto) => void;
 }
 
-export const GalleryScreen: React.FC<GalleryScreenProps> = ({ onSelectPhoto }) => {
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+export const GalleryScreen: React.FC<GalleryScreenProps> = ({
+  onSelectPhoto,
+}) => {
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [photos, setPhotos] = useState<GalleryPhoto[]>(GALLERY_PHOTOS);
 
   const categories = [
-    { id: 'all', label: 'Todas as Fotos', icon: '📸' },
-    { id: 'park', label: 'Aventuras no Parque', icon: '🌳' },
-    { id: 'naps', label: 'Sonecas Aconchegantes', icon: '😴' },
-    { id: 'puppy', label: 'Época de Filhote', icon: '🐾' },
-    { id: 'friends', label: 'Amigos Caninos', icon: '🐶' },
+    { id: "all", label: "Todas as Fotos", icon: "📸" },
+    { id: "park", label: "Aventuras no Parque", icon: "🌳" },
+    { id: "naps", label: "Sonecas Aconchegantes", icon: "😴" },
+    { id: "puppy", label: "Época de Filhote", icon: "🟤" },
+    { id: "friends", label: "Amigos Caninos", icon: "🐶" },
+    { id: "resting", label: "Descanso", icon: "🛏️" },
   ];
 
   const filteredPhotos =
-    selectedCategory === 'all'
+    selectedCategory === "all"
       ? photos
       : photos.filter((p) => p.category === selectedCategory);
 
   const handleLike = (e: React.MouseEvent, photoId: string) => {
     e.stopPropagation();
     setPhotos((prev) =>
-      prev.map((p) => (p.id === photoId ? { ...p, likes: p.likes + 1 } : p))
+      prev.map((p) => (p.id === photoId ? { ...p, likes: p.likes + 1 } : p)),
     );
 
     const rect = e.currentTarget.getBoundingClientRect();
@@ -39,14 +50,14 @@ export const GalleryScreen: React.FC<GalleryScreenProps> = ({ onSelectPhoto }) =
       particleCount: 20,
       spread: 45,
       origin: { x, y },
-      colors: ['#f43f5e', '#fb7185', '#22d3ee', '#ffffff'],
+      colors: ["#f43f5e", "#fb7185", "#22d3ee", "#ffffff"],
     });
   };
 
   const handleBoop = (e: React.MouseEvent, photoId: string) => {
     e.stopPropagation();
     setPhotos((prev) =>
-      prev.map((p) => (p.id === photoId ? { ...p, boops: p.boops + 1 } : p))
+      prev.map((p) => (p.id === photoId ? { ...p, boops: p.boops + 1 } : p)),
     );
 
     const rect = e.currentTarget.getBoundingClientRect();
@@ -57,7 +68,7 @@ export const GalleryScreen: React.FC<GalleryScreenProps> = ({ onSelectPhoto }) =
       particleCount: 20,
       spread: 45,
       origin: { x, y },
-      colors: ['#34d399', '#22d3ee', '#38bdf8', '#ffffff'],
+      colors: ["#34d399", "#22d3ee", "#38bdf8", "#ffffff"],
     });
   };
 
@@ -91,8 +102,8 @@ export const GalleryScreen: React.FC<GalleryScreenProps> = ({ onSelectPhoto }) =
               onClick={() => setSelectedCategory(cat.id)}
               className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-all ${
                 selectedCategory === cat.id
-                  ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/25 border border-cyan-300/40'
-                  : 'bg-white/10 text-white/70 hover:bg-white/15 border border-white/10'
+                  ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/25 border border-cyan-300/40"
+                  : "bg-white/10 text-white/70 hover:bg-white/15 border border-white/10"
               }`}
             >
               <span>{cat.icon}</span>

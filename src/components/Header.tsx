@@ -15,17 +15,69 @@ export const Header: React.FC<HeaderProps> = ({
 }) => {
   const [copied, setCopied] = React.useState(false);
 
-  const handleShare = () => {
-    if (navigator.share) {
-      navigator.share({
-        title: "Mundo do Doug - Perfil de Pug",
-        text: "Confira o Doug, o Pug mais lindo do mundo!",
-        url: window.location.href,
-      }).catch(() => {});
-    } else {
-      navigator.clipboard.writeText(window.location.href);
+  const copyToClipboard = async (text: string): Promise<boolean> => {
+    // 1. Try modern async Clipboard API if available
+    if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+      try {
+        await navigator.clipboard.writeText(text);
+        return true;
+      } catch {
+        // Continue to fallback
+      }
+    }
+
+    // 2. Fallback using temporary textarea (works on HTTP / local network / older mobile browsers)
+    try {
+      const textArea = document.createElement('textarea');
+      textArea.value = text;
+      textArea.style.position = 'fixed';
+      textArea.style.top = '0';
+      textArea.style.left = '-9999px';
+      textArea.style.opacity = '0';
+      textArea.setAttribute('readonly', '');
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      textArea.setSelectionRange(0, text.length);
+      const successful = document.execCommand('copy');
+      document.body.removeChild(textArea);
+      return successful;
+    } catch {
+      return false;
+    }
+  };
+
+  const handleShare = async () => {
+    const shareUrl = window.location.href;
+    const shareData = {
+      title: "Mundo do Doug - Perfil de Pug",
+      text: "Confira o Doug, o Pug mais lindo do mundo! 🐾",
+      url: shareUrl,
+    };
+
+    // Try native Web Share API first (supported on HTTPS / localhost)
+    if (typeof navigator !== 'undefined' && typeof navigator.share === 'function') {
+      try {
+        if (!navigator.canShare || navigator.canShare(shareData)) {
+          await navigator.share(shareData);
+          return;
+        }
+      } catch (err: any) {
+        // If user cancelled the share sheet, return silently
+        if (err?.name === 'AbortError') {
+          return;
+        }
+      }
+    }
+
+    // Fallback: copy link to clipboard
+    const success = await copyToClipboard(shareUrl);
+    if (success) {
       setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      setTimeout(() => setCopied(false), 3000);
+    } else {
+      // Last-resort fallback for constrained webviews
+      window.prompt("Copie o link abaixo:", shareUrl);
     }
   };
 

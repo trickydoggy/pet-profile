@@ -24,7 +24,7 @@ export interface NeighborhoodSpot {
 export interface GalleryPhoto {
   id: string;
   title: string;
-  category: 'park' | 'naps' | 'puppy' | 'friends';
+  category: 'park' | 'naps' | 'puppy' | 'friends' | 'resting';
   imageUrl: string;
   date: string;
   location: string;
