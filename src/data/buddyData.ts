@@ -28,9 +28,9 @@ export const BUDDY_PROFILE = {
   },
   humans: {
     names: 'Edson & Denise',
-    phone: '(11) 99931-8891',
-    phone1: '(11) 99133-5881',
-    vetPhone: '(11) 99310-1401',
+    phone: '11999318891',
+    phone1: '11991335881',
+    vetPhone: '11993101401',
     email: 'trickyeds@gmail.com',
     instagram: '@trickydoggy',
     emergencyVet: 'Vets of All',
