@@ -10,6 +10,7 @@ import {
   CheckCircle2,
   Download,
   Send,
+  MessageCircle,
 } from "lucide-react";
 import confetti from "canvas-confetti";
 import { NEIGHBORHOOD_SPOTS, BUDDY_PROFILE } from "../../data/buddyData";
@@ -20,6 +21,13 @@ interface PlaydateModalProps {
   onClose: () => void;
   initialSpot?: NeighborhoodSpot | null;
 }
+
+const ENERGY_LABELS: Record<string, string> = {
+  chill: "Cheirador Calmo 🌿",
+  medium: "Trote Moderado 🐾",
+  high: "Muita Bolinha 🎾",
+  zoomies: "Modo Fênix/Corrida ⚡",
+};
 
 export const PlaydateModal: React.FC<PlaydateModalProps> = ({
   isOpen,
@@ -39,12 +47,48 @@ export const PlaydateModal: React.FC<PlaydateModalProps> = ({
   );
   const [preferredDate, setPreferredDate] = useState("2026-08-16");
   const [preferredTime, setPreferredTime] = useState(
-    "10:00 AM (Morning Summit)",
+    "10:00 (Manhã no Morro)",
   );
   const [notes, setNotes] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
   if (!isOpen) return null;
+
+  const selectedSpot =
+    NEIGHBORHOOD_SPOTS.find((s) => s.id === selectedSpotId) ||
+    NEIGHBORHOOD_SPOTS[0];
+
+  const formatWhatsAppNumber = (phone: string) => {
+    const digits = phone.replace(/\D/g, "");
+    if (digits.length === 8 || digits.length === 9) {
+      return `5511${digits}`;
+    }
+    if (digits.length === 10 || digits.length === 11) {
+      return `55${digits}`;
+    }
+    return digits.startsWith("55") ? digits : `55${digits}`;
+  };
+
+  const buildWhatsAppUrl = () => {
+    const energyText = ENERGY_LABELS[energyLevel] || energyLevel;
+    const message = [
+      `*🐾 Convite de Encontro com o Doug!*`,
+      ``,
+      `🐶 *Cão Convidado:* ${dogName || "Amigo canino"}${dogBreed ? ` (${dogBreed})` : ""}`,
+      `⚡ *Energia/Estilo:* ${energyText}`,
+      `📍 *Local:* ${selectedSpot.name} (${selectedSpot.address})`,
+      `📅 *Data:* ${preferredDate}`,
+      `⏰ *Horário:* ${preferredTime}`,
+      `👤 *Tutor(a):* ${ownerName}`,
+      `📞 *Telefone:* ${ownerPhone}`,
+      notes ? `📝 *Observações:* ${notes}` : "",
+    ]
+      .filter(Boolean)
+      .join("\n");
+
+    const targetNumber = formatWhatsAppNumber(BUDDY_PROFILE.humans.phone);
+    return `https://api.whatsapp.com/send?phone=${targetNumber}&text=${encodeURIComponent(message)}`;
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -56,19 +100,18 @@ export const PlaydateModal: React.FC<PlaydateModalProps> = ({
       origin: { y: 0.6 },
       colors: ["#22d3ee", "#38bdf8", "#a855f7", "#34d399", "#ffffff"],
     });
-  };
 
-  const selectedSpot =
-    NEIGHBORHOOD_SPOTS.find((s) => s.id === selectedSpotId) ||
-    NEIGHBORHOOD_SPOTS[0];
+    const whatsappUrl = buildWhatsAppUrl();
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+  };
 
   const handleDownloadIcs = () => {
     const icsData = [
       "BEGIN:VCALENDAR",
       "VERSION:2.0",
-      "PRODID:-//Buddy World//Playdate Scheduler//EN",
+      "PRODID:-//Doug's World//Playdate Scheduler//EN",
       "BEGIN:VEVENT",
-      `SUMMARY:Doggy Playdate with Buddy & ${dogName || "Dog Friend"}! 🐾`,
+      `SUMMARY:Doggy Playdate with Doug & ${dogName || "Dog Friend"}! 🐾`,
       `DESCRIPTION:Doggy Playdate at ${selectedSpot.name}. Contact: ${BUDDY_PROFILE.humans.phone}`,
       `LOCATION:${selectedSpot.name}, ${selectedSpot.address}`,
       "DTSTART:20260816T170000Z",
@@ -307,10 +350,10 @@ export const PlaydateModal: React.FC<PlaydateModalProps> = ({
               <button
                 id="submit-playdate-btn"
                 type="submit"
-                className="w-full py-3.5 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold text-base shadow-lg shadow-cyan-500/25 border border-cyan-300/30 active:scale-95 transition-all flex items-center justify-center gap-2"
+                className="w-full py-3.5 rounded-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white font-bold text-base shadow-lg shadow-emerald-500/25 border border-emerald-300/30 active:scale-95 transition-all flex items-center justify-center gap-2"
               >
-                <Send className="w-4 h-4" />
-                <span>Enviar Convite de Encontro 🐾</span>
+                <MessageCircle className="w-5 h-5" />
+                <span>Enviar Convite pelo WhatsApp 🐾</span>
               </button>
             </form>
           </div>
@@ -323,13 +366,12 @@ export const PlaydateModal: React.FC<PlaydateModalProps> = ({
 
             <div>
               <h3 className="text-2xl font-extrabold text-white font-heading">
-                Convite de Encontro Enviado! 🎉
+                Convite Pronto para Enviar! 🎉
               </h3>
               <p className="text-sm text-white/70 mt-2 max-w-sm mx-auto leading-relaxed">
-                Os humanos do Buddy receberam sua mensagem para o cão{" "}
-                <strong>{dogName || "seu pet"}</strong> no local{" "}
-                <strong>{selectedSpot.name}</strong>. O rabo do Buddy já está
-                abanando!
+                O WhatsApp com os dados do cão{" "}
+                <strong>{dogName || "seu pet"}</strong> para o local{" "}
+                <strong>{selectedSpot.name}</strong> foi gerado. Caso o aplicativo não tenha aberto automaticamente, clique no botão abaixo!
               </p>
             </div>
 
@@ -339,7 +381,10 @@ export const PlaydateModal: React.FC<PlaydateModalProps> = ({
                 {selectedSpot.address})
               </p>
               <p>
-                <strong>📅 Data:</strong> {preferredDate} • {preferredTime}
+                <strong>📅 Data & Horário:</strong> {preferredDate} • {preferredTime}
+              </p>
+              <p>
+                <strong>👤 Tutor(a):</strong> {ownerName || "Não informado"}
               </p>
               <p>
                 <strong>📞 Contato:</strong> {ownerPhone || "Salvo"}
@@ -347,13 +392,23 @@ export const PlaydateModal: React.FC<PlaydateModalProps> = ({
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3 pt-2">
+              <a
+                id="open-whatsapp-btn"
+                href={buildWhatsAppUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 py-3 px-4 rounded-full bg-emerald-600 hover:bg-emerald-500 border border-emerald-400/40 text-white font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 shadow-md"
+              >
+                <MessageCircle className="w-4 h-4" />
+                <span>Abrir WhatsApp</span>
+              </a>
               <button
                 id="download-calendar-btn"
                 onClick={handleDownloadIcs}
-                className="flex-1 py-3 px-4 rounded-full bg-emerald-600/80 hover:bg-emerald-500 border border-emerald-400/40 text-white font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 shadow-md"
+                className="py-3 px-4 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2"
               >
                 <Download className="w-4 h-4" />
-                <span>Adicionar à Agenda (.ics)</span>
+                <span>Agenda (.ics)</span>
               </button>
               <button
                 id="done-playdate-btn"
@@ -361,7 +416,7 @@ export const PlaydateModal: React.FC<PlaydateModalProps> = ({
                   setSubmitted(false);
                   onClose();
                 }}
-                className="py-3 px-6 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold text-xs sm:text-sm transition-all"
+                className="py-3 px-5 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold text-xs sm:text-sm transition-all"
               >
                 Concluído
               </button>

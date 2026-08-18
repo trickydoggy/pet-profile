@@ -1,6 +1,4 @@
 {
-  "name": "Buddy's World - Pet Profile & Playdates",
-  "description": "A responsive, tactile personal pet profile and neighborhood community web app for Buddy the Golden Retriever with interactive screens, gallery, local map spots, and playdate scheduler.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "name": "Doug's World - Pet Profile",
+  "description": "A responsive, tactile personal pet profile app for Doug the cutie dog."
 }
