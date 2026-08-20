@@ -45,9 +45,14 @@ export const PlaydateModal: React.FC<PlaydateModalProps> = ({
   const [selectedSpotId, setSelectedSpotId] = useState(
     initialSpot ? initialSpot.id : NEIGHBORHOOD_SPOTS[0].id,
   );
-  const [preferredDate, setPreferredDate] = useState("2026-08-16");
+  const [preferredDate, setPreferredDate] = useState(
+    new Date().toLocaleDateString("pt-BR"),
+  );
   const [preferredTime, setPreferredTime] = useState(
-    "10:00 (Manhã no Morro)",
+    new Date().toLocaleTimeString("pt-BR", {
+      hour: "2-digit",
+      minute: "2-digit",
+    }),
   );
   const [notes, setNotes] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -371,7 +376,9 @@ export const PlaydateModal: React.FC<PlaydateModalProps> = ({
               <p className="text-sm text-white/70 mt-2 max-w-sm mx-auto leading-relaxed">
                 O WhatsApp com os dados do cão{" "}
                 <strong>{dogName || "seu pet"}</strong> para o local{" "}
-                <strong>{selectedSpot.name}</strong> foi gerado. Caso o aplicativo não tenha aberto automaticamente, clique no botão abaixo!
+                <strong>{selectedSpot.name}</strong> foi gerado. Caso o
+                aplicativo não tenha aberto automaticamente, clique no botão
+                abaixo!
               </p>
             </div>
 
@@ -381,7 +388,8 @@ export const PlaydateModal: React.FC<PlaydateModalProps> = ({
                 {selectedSpot.address})
               </p>
               <p>
-                <strong>📅 Data & Horário:</strong> {preferredDate} • {preferredTime}
+                <strong>📅 Data & Horário:</strong> {preferredDate} •{" "}
+                {preferredTime}
               </p>
               <p>
                 <strong>👤 Tutor(a):</strong> {ownerName || "Não informado"}
