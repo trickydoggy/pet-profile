@@ -16,7 +16,7 @@ export interface NeighborhoodSpot {
   buddyTip: string;
   amenities: string[];
   imageUrl: string;
-  coordinates: { x: number; y: number }; // percentage on map canvas
+  coordinates: { lat: number; lng: number }; // percentage on map canvas
   bestTimeToVisit: string;
   leashRule: 'Sem coleira permitido' | 'Apenas com coleira' | 'Parque cercado para cães';
 }

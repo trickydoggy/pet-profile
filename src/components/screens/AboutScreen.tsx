@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Heart,
   Cake,
@@ -17,15 +17,22 @@ import {
   MapPin,
   CalendarHeart,
   Frown,
-} from 'lucide-react';
-import confetti from 'canvas-confetti';
-import { BUDDY_PROFILE, DAILY_ROUTINE, FAVORITE_THINGS, DISLIKE_THINGS } from '../../data/buddyData';
+} from "lucide-react";
+import confetti from "canvas-confetti";
+import {
+  BUDDY_PROFILE,
+  DAILY_ROUTINE,
+  FAVORITE_THINGS,
+  DISLIKE_THINGS,
+} from "../../data/buddyData";
 
 interface AboutScreenProps {
   onOpenPlaydateModal: () => void;
 }
 
-export const AboutScreen: React.FC<AboutScreenProps> = ({ onOpenPlaydateModal }) => {
+export const AboutScreen: React.FC<AboutScreenProps> = ({
+  onOpenPlaydateModal,
+}) => {
   const [treatsGiven, setTreatsGiven] = useState(42);
   const [bellyRubs, setBellyRubs] = useState(88);
   const [lastAction, setLastAction] = useState<string | null>(null);
@@ -42,7 +49,7 @@ export const AboutScreen: React.FC<AboutScreenProps> = ({ onOpenPlaydateModal })
       particleCount: 30,
       spread: 70,
       origin: { x, y },
-      colors: ['#22d3ee', '#38bdf8', '#a855f7', '#34d399', '#ffffff'],
+      colors: ["#22d3ee", "#38bdf8", "#a855f7", "#34d399", "#ffffff"],
     });
 
     setTimeout(() => setLastAction(null), 3000);
@@ -50,7 +57,7 @@ export const AboutScreen: React.FC<AboutScreenProps> = ({ onOpenPlaydateModal })
 
   const giveBellyRub = (e: React.MouseEvent) => {
     setBellyRubs((prev) => prev + 1);
-    setLastAction('Tump-tump-tump! A patinha acenando de pura alegria! 🐾');
+    setLastAction("Tump-tump-tump! A patinha acenando de pura alegria! 🐾");
 
     const rect = e.currentTarget.getBoundingClientRect();
     const x = (rect.left + rect.width / 2) / window.innerWidth;
@@ -60,7 +67,7 @@ export const AboutScreen: React.FC<AboutScreenProps> = ({ onOpenPlaydateModal })
       particleCount: 25,
       spread: 55,
       origin: { x, y },
-      colors: ['#f43f5e', '#fb7185', '#22d3ee', '#ffffff'],
+      colors: ["#f43f5e", "#fb7185", "#22d3ee", "#ffffff"],
     });
 
     setTimeout(() => setLastAction(null), 3000);
@@ -133,14 +140,34 @@ export const AboutScreen: React.FC<AboutScreenProps> = ({ onOpenPlaydateModal })
         </h3>
         <div className="text-sm sm:text-base text-white/80 leading-relaxed space-y-3">
           <p>
-            Nós éramos em 3 irmãos e disseram que éramos todos iguais, mas eu tive a sorte de ser escolhido por essa família que me ama mais do que tudo no mundo! Desde a infância sempre fui muito feliz, e adorava passear pela vizinhança e cheirar todos os cantos para conhecer a região. Sou tranquilo com todos e estraguei poucos chinelos. Isto foi só quando os meus dentes estavam crescendo. Outro coisa de que me orgulho é que eu aprendi a fazer xixi no tapete higiênico sem precisar usar o pipi dog.
+            Nós éramos em 3 irmãos e disseram que éramos todos iguais, mas eu
+            tive a sorte de ser escolhido por essa família que me ama mais do
+            que tudo no mundo! Desde a infância sempre fui muito feliz, e
+            adorava passear pela vizinhança e cheirar todos os cantos para
+            conhecer a região. Sou tranquilo com todos e estraguei poucos
+            chinelos. Isto foi só quando os meus dentes estavam crescendo. Outro
+            coisa de que me orgulho é que eu aprendi a fazer xixi no tapete
+            higiênico sem precisar usar o pipi dog.
           </p>
           <p>
-            Gosto de dormir no cantinho do sofá e agora que estou ficando mais velhinho parece que tenho mais sono. Também gosto de passear mesmo que por um curto período, na verdade eu não consigo andar por muito tempo. Por causa do meu focinho eu tenho pouco fôlego e não aguento muito esforço físico. Também não gosto de andar de carro. Fico muito ansioso e fico ofegante por um bom tempinho depois.
+            Gosto de dormir no cantinho do sofá e agora que estou ficando mais
+            velhinho parece que tenho mais sono. Também gosto de passear mesmo
+            que por um curto período, na verdade eu não consigo andar por muito
+            tempo. Por causa do meu focinho eu tenho pouco fôlego e não aguento
+            muito esforço físico. Também não gosto de andar de carro. Fico muito
+            ansioso e fico ofegante por um bom tempinho depois.
           </p>
           <p>
-            Uma vez eu quase morri e fiquei internado no hospital por 2 dias, por causa de uma caminhada extensa em um dia muito quente. Desde então, só posso passear por curtos períodos e evito exercícios extenuantes, especialmente em climas quentes. 
-            Eu também estou perdendo um pouca da visão e audição, por isso  gosto de ficar perto dos meus amigos humanos para que possam me auxiliar se necessário. Eles são muito carinhosos comigo e por isto sou muito feliz. Estou um pouco gordinho por isto tenho que comer ração especial para obesidade. Mesmo assim não dispenso uma bom bifinho de Maça e Cenoura.
+            Uma vez eu quase morri e fiquei internado 2 dias no hospital Vets of
+            All, por causa de uma caminhada extensa em um dia muito quente.
+            Desde então, só posso passear por curtos períodos e evito exercícios
+            extenuantes, especialmente em climas quentes. Eu também estou
+            perdendo um pouca da visão e audição, por isso gosto de ficar perto
+            dos meus amigos humanos para que possam me auxiliar se necessário.
+            Eles são muito carinhosos comigo e por isto sou muito feliz. Estou
+            um pouco gordinho por isto tenho que comer ração especial para
+            obesidade. Mesmo assim não dispenso uma bom bifinho de Maça e
+            Cenoura.
           </p>
         </div>
 
@@ -150,9 +177,9 @@ export const AboutScreen: React.FC<AboutScreenProps> = ({ onOpenPlaydateModal })
             <span
               key={idx}
               className={`px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wide border ${
-                trait.type === 'sage'
-                  ? 'bg-emerald-500/20 text-emerald-300 border-emerald-400/30'
-                  : 'bg-cyan-500/20 text-cyan-300 border-cyan-400/30'
+                trait.type === "sage"
+                  ? "bg-emerald-500/20 text-emerald-300 border-emerald-400/30"
+                  : "bg-cyan-500/20 text-cyan-300 border-cyan-400/30"
               }`}
             >
               {trait.label}
@@ -174,27 +201,40 @@ export const AboutScreen: React.FC<AboutScreenProps> = ({ onOpenPlaydateModal })
               <span className="text-cyan-400">100% (Amigo Instantâneo)</span>
             </div>
             <div className="w-full h-3 rounded-full bg-white/10 overflow-hidden border border-white/10">
-              <div className="h-full rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 shadow-[0_0_10px_#22d3ee]" style={{ width: '100%' }} />
+              <div
+                className="h-full rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 shadow-[0_0_10px_#22d3ee]"
+                style={{ width: "100%" }}
+              />
             </div>
           </div>
 
           <div>
             <div className="flex justify-between text-xs sm:text-sm font-bold text-white mb-1.5">
               <span>Energia & Vontade de Brincar</span>
-              <span className="text-emerald-400">40% (Estou ficando velhinho....snif!)</span>
+              <span className="text-emerald-400">
+                40% (Estou ficando velhinho....snif!)
+              </span>
             </div>
             <div className="w-full h-3 rounded-full bg-white/10 overflow-hidden border border-white/10">
-              <div className="h-full rounded-full bg-gradient-to-r from-emerald-500 to-teal-400 shadow-[0_0_10px_#34d399]" style={{ width: '40%' }} />
+              <div
+                className="h-full rounded-full bg-gradient-to-r from-emerald-500 to-teal-400 shadow-[0_0_10px_#34d399]"
+                style={{ width: "40%" }}
+              />
             </div>
           </div>
 
           <div>
             <div className="flex justify-between text-xs sm:text-sm font-bold text-white mb-1.5">
               <span>Motivação por Petiscos & Radar de Cheiro</span>
-              <span className="text-purple-400">100% (Detecta bifinho a 2km)</span>
+              <span className="text-purple-400">
+                100% (Detecta bifinho a 2km)
+              </span>
             </div>
             <div className="w-full h-3 rounded-full bg-white/10 overflow-hidden border border-white/10">
-              <div className="h-full rounded-full bg-gradient-to-r from-purple-500 to-pink-500 shadow-[0_0_10px_#c084fc]" style={{ width: '100%' }} />
+              <div
+                className="h-full rounded-full bg-gradient-to-r from-purple-500 to-pink-500 shadow-[0_0_10px_#c084fc]"
+                style={{ width: "100%" }}
+              />
             </div>
           </div>
 
@@ -204,7 +244,10 @@ export const AboutScreen: React.FC<AboutScreenProps> = ({ onOpenPlaydateModal })
               <span className="text-cyan-400">10% (Detesto Piscina)</span>
             </div>
             <div className="w-full h-3 rounded-full bg-white/10 overflow-hidden border border-white/10">
-              <div className="h-full rounded-full bg-gradient-to-r from-cyan-400 to-blue-600 shadow-[0_0_10px_#38bdf8]" style={{ width: '10%' }} />
+              <div
+                className="h-full rounded-full bg-gradient-to-r from-cyan-400 to-blue-600 shadow-[0_0_10px_#38bdf8]"
+                style={{ width: "10%" }}
+              />
             </div>
           </div>
         </div>
@@ -280,8 +323,7 @@ export const AboutScreen: React.FC<AboutScreenProps> = ({ onOpenPlaydateModal })
             </div>
           ))}
         </div>
-      </div>    
-
+      </div>
 
       {/* Health & Care Information Card */}
       <div className="bg-white/5 backdrop-blur-xl rounded-[24px] p-6 shadow-2xl border border-white/10">
@@ -304,7 +346,9 @@ export const AboutScreen: React.FC<AboutScreenProps> = ({ onOpenPlaydateModal })
           </div>
           <div className="p-3 rounded-xl bg-white/5 border border-white/10">
             <span className="text-white/50 block text-[11px]">Veterinário</span>
-            <span className="font-bold text-white">Hospital Vets of All (11 99310-1401)</span>
+            <span className="font-bold text-white">
+              Hospital Vets of All (11 99310-1401)
+            </span>
           </div>
         </div>
       </div>
