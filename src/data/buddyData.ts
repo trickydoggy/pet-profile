@@ -69,7 +69,7 @@ export const NEIGHBORHOOD_SPOTS: NeighborhoodSpot[] = [
     bestTimeToVisit: '16:00 – 18:00 para horário de pico de amiguinhos',
     leashRule: 'Parque cercado para cães',
   },
- /* {
+  /*{
     id: 'woof-and-meow-cafe',
     name: 'Café Woof & Meow',
     category: 'cafe',

@@ -1,6 +1,12 @@
-import React from 'react';
-import { PawPrint, CalendarHeart, Smartphone, Monitor, Share2 } from 'lucide-react';
-import { BUDDY_PROFILE } from '../data/buddyData';
+import React from "react";
+import {
+  PawPrint,
+  CalendarHeart,
+  Smartphone,
+  Monitor,
+  Share2,
+} from "lucide-react";
+import { BUDDY_PROFILE } from "../data/buddyData";
 
 interface HeaderProps {
   onOpenPlaydate: () => void;
@@ -17,7 +23,10 @@ export const Header: React.FC<HeaderProps> = ({
 
   const copyToClipboard = async (text: string): Promise<boolean> => {
     // 1. Try modern async Clipboard API if available
-    if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+    if (
+      navigator.clipboard &&
+      typeof navigator.clipboard.writeText === "function"
+    ) {
       try {
         await navigator.clipboard.writeText(text);
         return true;
@@ -28,18 +37,18 @@ export const Header: React.FC<HeaderProps> = ({
 
     // 2. Fallback using temporary textarea (works on HTTP / local network / older mobile browsers)
     try {
-      const textArea = document.createElement('textarea');
+      const textArea = document.createElement("textarea");
       textArea.value = text;
-      textArea.style.position = 'fixed';
-      textArea.style.top = '0';
-      textArea.style.left = '-9999px';
-      textArea.style.opacity = '0';
-      textArea.setAttribute('readonly', '');
+      textArea.style.position = "fixed";
+      textArea.style.top = "0";
+      textArea.style.left = "-9999px";
+      textArea.style.opacity = "0";
+      textArea.setAttribute("readonly", "");
       document.body.appendChild(textArea);
       textArea.focus();
       textArea.select();
       textArea.setSelectionRange(0, text.length);
-      const successful = document.execCommand('copy');
+      const successful = document.execCommand("copy");
       document.body.removeChild(textArea);
       return successful;
     } catch {
@@ -56,7 +65,10 @@ export const Header: React.FC<HeaderProps> = ({
     };
 
     // Try native Web Share API first (supported on HTTPS / localhost)
-    if (typeof navigator !== 'undefined' && typeof navigator.share === 'function') {
+    if (
+      typeof navigator !== "undefined" &&
+      typeof navigator.share === "function"
+    ) {
       try {
         if (!navigator.canShare || navigator.canShare(shareData)) {
           await navigator.share(shareData);
@@ -64,7 +76,7 @@ export const Header: React.FC<HeaderProps> = ({
         }
       } catch (err: any) {
         // If user cancelled the share sheet, return silently
-        if (err?.name === 'AbortError') {
+        if (err?.name === "AbortError") {
           return;
         }
       }
@@ -98,12 +110,12 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* Action Controls */}
         <div className="flex items-center gap-2 sm:gap-3">
-
           {/* Quick Playdate button */}
           <button
             id="header-playdate-btn"
             onClick={onOpenPlaydate}
             className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white text-xs sm:text-sm font-semibold shadow-lg shadow-cyan-500/25 border border-cyan-300/30 transition-all transform active:scale-95"
+            hidden
           >
             <CalendarHeart className="w-4 h-4" />
             <span className="hidden xs:inline">Marcar Encontro</span>
@@ -123,7 +135,8 @@ export const Header: React.FC<HeaderProps> = ({
       </div>
       {copied && (
         <div className="bg-cyan-500/90 backdrop-blur-md text-white text-center py-1 text-xs font-medium animate-pulse border-y border-cyan-400/40">
-          🐾 Link copiado para a área de transferência! Compartilhe com amigos caninos!
+          🐾 Link copiado para a área de transferência! Compartilhe com amigos
+          caninos!
         </div>
       )}
     </header>
