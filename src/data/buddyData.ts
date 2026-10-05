@@ -5,7 +5,7 @@ export const BUDDY_PROFILE = {
   headline: "Olá, eu sou o Doug!",
   tagline: "O cachorro mais bonito do mundo!",
   birthday: '14 de Setembro de 2015',
-  age: '10 anos de idade',
+  age: '11 anos de idade',
   breed: 'Pug',
   neighborhood: 'Vila Industria, São Paulo, SP',
   weight: '11 kg (24 lbs)',
